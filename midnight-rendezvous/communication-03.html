@@ -1,0 +1,300 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#234b38">
+<title>SB Agency | Final Response</title>
+<style>
+:root {
+  --green:#234b38;
+  --dark:#163324;
+  --cream:#f5f0e3;
+  --paper:#fffdf7;
+  --ink:#252b25;
+  --muted:#646b62;
+  --border:#c9c5b7;
+}
+* { box-sizing:border-box; }
+body {
+  margin:0; padding:20px 12px; background:var(--cream);
+  color:var(--ink); font-family:Georgia,"Times New Roman",serif;
+  line-height:1.55;
+}
+.dossier {
+  max-width:680px; margin:0 auto; padding:24px;
+  background:var(--paper); border:1px solid var(--border);
+  box-shadow:0 5px 18px rgba(0,0,0,.08);
+}
+.agency {
+  text-align:center; color:var(--green); font: bold 13px Arial,sans-serif;
+  letter-spacing:3px; text-transform:uppercase;
+}
+.classification {
+  width:fit-content; margin:18px auto; padding:5px 12px;
+  border:2px solid #9a3930; color:#9a3930;
+  font:bold 12px Arial,sans-serif; letter-spacing:2px;
+  transform:rotate(-2deg);
+}
+h1 {
+  margin:12px 0 4px; color:var(--dark); text-align:center;
+  font-size:clamp(25px,5vw,34px); line-height:1.2;
+}
+.subtitle {
+  margin:0 0 24px; color:var(--muted); text-align:center;
+  font:13px Arial,sans-serif;
+}
+.rule { border:0; border-top:1px solid var(--border); margin:22px 0; }
+h2 { margin:0 0 10px; color:var(--green); font-size:19px; }
+.intro { font-size:16px; }
+.instructions {
+  margin:18px 0; padding:12px 15px; background:#f0eee4;
+  border-left:4px solid var(--green); font-size:14px;
+}
+.field-label { display:block; margin:16px 0 7px; font-weight:bold; }
+select, textarea {
+  display:block; width:100%; padding:12px;
+  border:1px solid var(--border); border-radius:4px;
+  background:white; color:var(--ink); font:inherit;
+}
+textarea { min-height:85px; resize:vertical; }
+.choice {
+  display:flex; align-items:flex-start; gap:11px;
+  margin:10px 0; padding:14px; border:1px solid var(--border);
+  border-radius:5px; background:white; cursor:pointer;
+  color:var(--dark); font-size:16px;
+}
+.choice:has(input:checked) { border:2px solid var(--green); background:#edf3ed; }
+.choice input { margin-top:5px; accent-color:var(--green); }
+button {
+  display:block; width:100%; margin-top:12px; padding:14px 16px;
+  border:0; border-radius:4px; background:var(--green);
+  color:white; font-size:15px; font-weight:bold; cursor:pointer;
+}
+button:hover { background:var(--dark); }
+button.secondary {
+  border:1px solid var(--border); background:#e7e5da; color:var(--dark);
+}
+.status {
+  display:none; margin-top:15px; padding:12px;
+  border:1px solid #aabbaa; border-radius:4px;
+  background:#edf3ed; overflow-wrap:anywhere;
+}
+.status pre { white-space:pre-wrap; overflow-wrap:anywhere; font-family:inherit; }
+.small-print {
+  margin-top:22px; color:var(--muted); text-align:center;
+  font:12px Arial,sans-serif;
+}
+@media(max-width:480px) {
+  body { padding:10px 6px; }
+  .dossier { padding:18px 15px; }
+}
+</style>
+</head>
+<body>
+<main class="dossier">
+  <div class="agency">SB Agency</div>
+  <div class="classification">CONFIDENTIAL — EYES ONLY</div>
+  <h1>Operation: Midnight Rendezvous</h1>
+  <p class="subtitle">Communiqué 03 · Final Response</p>
+  <hr class="rule">
+
+  <p class="intro">
+    <strong>To:</strong> Special Agent 18094<br>
+    <strong>From:</strong> Handler Paul<br>
+    <strong>Subject:</strong> Final mission preference
+  </p>
+
+  <p>
+    Agent 18094, so happy you made it to this step. Paul eagerly awaits returning to you. Please select the category of revealing your assets you chose in Communiqué 02.
+    Then select your preferred option from that category. This builds anticipation and spice to our reconnection. Your final
+    selection will be prepared for transmission to Handler Paul.
+  </p>
+
+  <div class="instructions">
+    <strong>Instructions</strong><br>
+    First choose your mission category. The corresponding options will
+    appear below. Select one final option, then transmit your reply.
+  </div>
+
+  <form id="finalForm">
+    <label class="field-label" for="category">Mission category</label>
+    <select id="category" required>
+      <option value="">Choose your category...</option>
+      <option value="Trench Coat Cover-Up">Trench Coat Cover-Up</option>
+      <option value="Northwoods Remembered">Northwoods Remembered</option>
+      <option value="Cozy Agent Comfort">Cozy Agent Comfort</option>
+      <option value="Hot Tub Debrief">Hot Tub Debrief</option>
+      <option value="Basement Safehouse">Basement Safehouse</option>
+      <option value="Bedroom Retreat">Bedroom Retreat</option>
+    </select>
+
+    <h2 style="margin-top:22px">Choose your preferred option</h2>
+    <div id="options">
+      <p style="color:#646b62;font-size:14px">
+        Select a category above to view its two options.
+      </p>
+    </div>
+
+    <label class="field-label" for="agentNote">Optional message to Handler</label>
+    <textarea id="agentNote" placeholder="Add a note for Handler Paul, if desired..."></textarea>
+
+    <button type="button" id="shareButton">Transmit Agent's Reply</button>
+    <button type="button" class="secondary" id="previewButton">Review Reply Before Sharing</button>
+  </form>
+
+  <div id="status" class="status" role="status" aria-live="polite"></div>
+  <hr class="rule">
+  <p class="small-print">
+    SB AGENCY · OPERATION: MIDNIGHT RENDEZVOUS<br>
+    AUTHORIZED PERSONNEL ONLY
+  </p>
+</main>
+
+<script>
+const optionSets = {
+  "Trench Coat Cover-Up": ["White Elegance", "Black Noir"],
+  "Northwoods Remembered": ["Crimson Field Agent", "Northwoods After Hours"],
+  "Cozy Agent Comfort": ["Soft Landing", "Durango Comfort Kit"],
+  "Hot Tub Debrief": ["Warm-Water Debrief", "Midnight Toast"],
+  "Basement Safehouse": ["Safehouse Cinema", "Intelligence Exchange"],
+  "Bedroom Retreat": ["Quiet Reconnection", "No-Agenda Retreat"]
+};
+
+const category = document.getElementById("category");
+const optionsBox = document.getElementById("options");
+const statusBox = document.getElementById("status");
+
+category.addEventListener("change", function() {
+  optionsBox.replaceChildren();
+  const choices = optionSets[category.value];
+
+  if (!choices) {
+    optionsBox.textContent = "Select a category above to view its options.";
+    return;
+  }
+
+  choices.forEach(function(option, index) {
+    const label = document.createElement("label");
+    label.className = "choice";
+
+    const radio = document.createElement("input");
+    radio.type = "radio";
+    radio.name = "finalOption";
+    radio.value = option;
+    radio.required = true;
+
+    const text = document.createElement("span");
+    text.textContent = option;
+
+    label.appendChild(radio);
+    label.appendChild(text);
+    optionsBox.appendChild(label);
+  });
+});
+
+function getReply() {
+  const selectedCategory = category.value;
+  const selectedOption = document.querySelector('input[name="finalOption"]:checked');
+
+  if (!selectedCategory) {
+    statusBox.style.display = "block";
+    statusBox.textContent = "Please choose a mission category first.";
+    return null;
+  }
+
+  if (!selectedOption) {
+    statusBox.style.display = "block";
+    statusBox.textContent = "Please choose one of the two options for your category.";
+    return null;
+  }
+
+  const note = document.getElementById("agentNote").value.trim();
+
+  let message =
+    "SB AGENCY — CONFIDENTIAL REPLY\n" +
+    "Operation: Midnight Rendezvous\n" +
+    "Communiqué 03 — Final Response\n\n" +
+    "From: Agent 18094\n" +
+    "To: Handler Paul\n\n" +
+    "Mission category: " + selectedCategory + "\n" +
+    "Final selection: " + selectedOption.value + "\n";
+
+  if (note) {
+    message += "\nMessage to Handler:\n" + note + "\n";
+  }
+
+  message += "\nAgent 18094 has submitted her final mission preference.";
+  return message;
+}
+
+function showPreview(message) {
+  statusBox.style.display = "block";
+  statusBox.replaceChildren();
+
+  const heading = document.createElement("strong");
+  heading.textContent = "Agent's final reply";
+  statusBox.appendChild(heading);
+
+  const preview = document.createElement("pre");
+  preview.textContent = message;
+  statusBox.appendChild(preview);
+
+  statusBox.scrollIntoView({behavior:"smooth", block:"nearest"});
+}
+
+document.getElementById("previewButton").addEventListener("click", function() {
+  const message = getReply();
+  if (message) showPreview(message);
+});
+
+document.getElementById("shareButton").addEventListener("click", async function() {
+  const message = getReply();
+  if (!message) return;
+
+  if (navigator.share) {
+    try {
+      await navigator.share({
+        title: "SB Agency — Final Response",
+        text: message
+      });
+    } catch (error) {
+      if (error.name !== "AbortError") {
+        statusBox.style.display = "block";
+        statusBox.textContent =
+          "Sharing could not be opened. Please try again or use Review Reply Before Sharing.";
+      }
+    }
+  } else {
+    showPreview(message);
+
+    const notice = document.createElement("p");
+    notice.textContent =
+      "Sharing is not supported in this browser. Copy the reply below " +
+      "and paste it into your preferred messaging app.";
+    statusBox.appendChild(notice);
+
+    const copyButton = document.createElement("button");
+    copyButton.type = "button";
+    copyButton.textContent = "Copy Reply";
+
+    copyButton.addEventListener("click", async function() {
+      try {
+        await navigator.clipboard.writeText(message);
+        copyButton.textContent = "Reply Copied";
+      } catch (error) {
+        const textArea = document.createElement("textarea");
+        textArea.value = message;
+        statusBox.appendChild(textArea);
+        textArea.focus();
+        textArea.select();
+      }
+    });
+
+    statusBox.appendChild(copyButton);
+  }
+});
+</script>
+</body>
+</html>
