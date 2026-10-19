@@ -1,458 +1,652 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#234b38">
-<title>SB Agency | Final Response</title>
-<style>
-:root {
-  --green:#234b38;
-  --dark:#163324;
-  --cream:#f5f0e3;
-  --paper:#fffdf7;
-  --ink:#252b25;
-  --muted:#646b62;
-  --border:#c9c5b7;
-}
-* { box-sizing:border-box; }
-body {
-  margin:0; padding:20px 12px; background:var(--cream);
-  color:var(--ink); font-family:Georgia,"Times New Roman",serif;
-  line-height:1.55;
-}
-.dossier {
-  max-width:680px; margin:0 auto; padding:24px;
-  background:var(--paper); border:1px solid var(--border);
-  box-shadow:0 5px 18px rgba(0,0,0,.08);
-}
-.agency {
-  text-align:center; color:var(--green); font: bold 13px Arial,sans-serif;
-  letter-spacing:3px; text-transform:uppercase;
-}
-.classification {
-  width:fit-content; margin:18px auto; padding:5px 12px;
-  border:2px solid #9a3930; color:#9a3930;
-  font:bold 12px Arial,sans-serif; letter-spacing:2px;
-  transform:rotate(-2deg);
-}
-h1 {
-  margin:12px 0 4px; color:var(--dark); text-align:center;
-  font-size:clamp(25px,5vw,34px); line-height:1.2;
-}
-.subtitle {
-  margin:0 0 24px; color:var(--muted); text-align:center;
-  font:13px Arial,sans-serif;
-}
-.rule { border:0; border-top:1px solid var(--border); margin:22px 0; }
-h2 { margin:0 0 10px; color:var(--green); font-size:19px; }
-.intro { font-size:16px; }
-.instructions {
-  margin:18px 0; padding:12px 15px; background:#f0eee4;
-  border-left:4px solid var(--green); font-size:14px;
-}
-.field-label { display:block; margin:16px 0 7px; font-weight:bold; }
-select, textarea {
-  display:block; width:100%; padding:12px;
-  border:1px solid var(--border); border-radius:4px;
-  background:white; color:var(--ink); font:inherit;
-}
-textarea { min-height:85px; resize:vertical; }
-.choice {
-  display:flex; align-items:flex-start; gap:11px;
-  margin:10px 0; padding:14px; border:1px solid var(--border);
-  border-radius:5px; background:white; cursor:pointer;
-  color:var(--dark); font-size:16px;
-}
-.choice:has(input:checked) { border:2px solid var(--green); background:#edf3ed; }
-.choice input { margin-top:5px; accent-color:var(--green); }
-button {
-  display:block; width:100%; margin-top:12px; padding:14px 16px;
-  border:0; border-radius:4px; background:var(--green);
-  color:white; font-size:15px; font-weight:bold; cursor:pointer;
-}
-button:hover { background:var(--dark); }
-button.secondary {
-  border:1px solid var(--border); background:#e7e5da; color:var(--dark);
-}
-.status {
-  display:none; margin-top:15px; padding:12px;
-  border:1px solid #aabbaa; border-radius:4px;
-  background:#edf3ed; overflow-wrap:anywhere;
-}
-.status pre { white-space:pre-wrap; overflow-wrap:anywhere; font-family:inherit; }
-.small-print {
-  margin-top:22px; color:var(--muted); text-align:center;
-  font:12px Arial,sans-serif;
-}
-@media(max-width:480px) {
-  body { padding:10px 6px; }
-  .dossier { padding:18px 15px; }
-}
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#0d1e18" />
+  <title>SB Agency | Classified Dossier 03</title>
+  <style>
+    :root {
+      --bg: #0b1512;
+      --bg-deep: #09130f;
+      --panel: rgba(15, 28, 24, 0.92);
+      --panel-soft: rgba(20, 34, 29, 0.8);
+      --paper: #f4efe6;
+      --paper-deep: #e8e0d1;
+      --ink: #e8e0d1;
+      --ink-deep: #101a15;
+      --muted: #a7b0a7;
+      --line: rgba(196, 171, 112, 0.45);
+      --gold: #c6a66b;
+      --gold-deep: #8f7347;
+      --green: #274b40;
+      --green-bright: #3c6458;
+      --red: #8d3a2f;
+      --shadow: rgba(0, 0, 0, 0.38);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at 50% 0%, rgba(58, 91, 67, 0.28), transparent 28%),
+        linear-gradient(180deg, var(--bg-deep), var(--bg) 30%, #0e1b17 100%);
+      color: var(--ink);
+      font-family: Georgia, "Times New Roman", serif;
+      line-height: 1.65;
+      padding: 30px 14px;
+    }
+
+    .dossier-shell {
+      max-width: 760px;
+      margin: 0 auto;
+      border: 1px solid var(--line);
+      background: rgba(9, 19, 15, 0.88);
+      box-shadow:
+        0 30px 60px rgba(0,0,0,0.32),
+        inset 0 0 0 1px rgba(255,255,255,0.03);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .dossier-shell::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(125deg, rgba(198,166,107,0.07), transparent 28%, rgba(255,255,255,0.02) 60%, transparent);
+      pointer-events: none;
+    }
+
+    .dossier-inner {
+      position: relative;
+      z-index: 1;
+      padding: 12px 20px 26px;
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      padding: 16px 6px 10px;
+      border-bottom: 1px solid var(--line);
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      font: 700 11px/1 Arial, Helvetica, sans-serif;
+      color: var(--muted);
+    }
+
+    .seal {
+      color: var(--gold);
+      text-shadow: 0 0 12px rgba(198, 166, 107, 0.3);
+    }
+
+    .status-tag {
+      color: var(--gold);
+      border: 1px solid var(--line);
+      padding: 7px 10px;
+      border-radius: 999px;
+      background: rgba(198,166,107,0.04);
+    }
+
+    .header {
+      padding: 24px 10px 10px;
+      text-align: center;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .header .subject {
+      margin: 0;
+      color: var(--gold);
+      font: 700 12px/1.3 Arial, Helvetica, sans-serif;
+      letter-spacing: 0.34em;
+      text-transform: uppercase;
+    }
+
+    .header h1 {
+      margin: 16px 0 6px;
+      color: var(--paper);
+      font-size: clamp(32px, 5vw, 46px);
+      line-height: 1.1;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .header .subtitle {
+      margin: 0;
+      color: var(--muted);
+      font: 700 12px/1.4 Arial, Helvetica, sans-serif;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+    }
+
+    .content {
+      padding: 24px 10px 0;
+    }
+
+    .meta {
+      margin-bottom: 20px;
+      padding: 16px 18px;
+      background: rgba(198,166,107,0.03);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      color: var(--paper);
+      font-size: 0.98rem;
+    }
+
+    .meta strong {
+      color: var(--gold);
+      font-family: Arial, Helvetica, sans-serif;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      font-size: 0.72rem;
+      display: inline-block;
+      width: 120px;
+    }
+
+    .meta div + div {
+      margin-top: 8px;
+    }
+
+    .intro {
+      color: var(--ink);
+      font-size: 1.04rem;
+      padding: 0 4px;
+    }
+
+    .instructions {
+      margin: 22px 0 18px;
+      padding: 14px 16px;
+      background: rgba(255,255,255,0.03);
+      border-left: 4px solid var(--gold);
+      border-radius: 8px;
+      color: var(--ink);
+      font-size: 0.98rem;
+      box-shadow: inset 0 0 0 1px rgba(198,166,107,0.08);
+    }
+
+    .instructions strong {
+      color: var(--gold);
+      font-family: Arial, Helvetica, sans-serif;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      font-size: 0.74rem;
+      display: inline-block;
+      margin-bottom: 8px;
+    }
+
+    .form-wrap {
+      margin-top: 8px;
+      padding: 8px 0 0;
+    }
+
+    .field-label {
+      display: block;
+      margin: 18px 0 9px;
+      color: var(--gold);
+      font-family: Arial, Helvetica, sans-serif;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-size: 0.7rem;
+    }
+
+    select,
+    textarea {
+      width: 100%;
+      display: block;
+      padding: 13px 14px;
+      border: 1px solid rgba(198,166,107,0.4);
+      border-radius: 8px;
+      background: rgba(255,255,255,0.02);
+      color: var(--ink);
+      font: inherit;
+      transition: border-color 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
+    }
+
+    select:focus,
+    textarea:focus {
+      outline: none;
+      border-color: var(--gold);
+      background: rgba(255,255,255,0.04);
+      box-shadow: 0 0 0 3px rgba(198,166,107,0.1);
+    }
+
+    textarea {
+      min-height: 95px;
+      resize: vertical;
+    }
+
+    h2 {
+      margin: 28px 0 10px;
+      color: var(--paper);
+      font-size: 1.08rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    #options {
+      margin-top: 10px;
+    }
+
+    .choice {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      margin: 10px 0;
+      padding: 14px 14px;
+      border: 1px solid rgba(198,166,107,0.35);
+      border-radius: 10px;
+      background: rgba(255,255,255,0.02);
+      color: var(--ink);
+      cursor: pointer;
+      transition: transform 0.15s ease, border-color 0.15s ease, background 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .choice:hover {
+      transform: translateY(-1px);
+      border-color: rgba(198,166,107,0.7);
+      box-shadow: 0 8px 18px rgba(0,0,0,0.12);
+    }
+
+    .choice input {
+      margin-top: 3px;
+      accent-color: var(--gold);
+      transform: scale(1.08);
+      flex-shrink: 0;
+    }
+
+    .choice .option-text {
+      flex: 1;
+      line-height: 1.5;
+      color: var(--ink);
+    }
+
+    .choice.selected {
+      background: rgba(198,166,107,0.08);
+      border: 2px solid var(--gold);
+      box-shadow: inset 0 0 0 1px rgba(198,166,107,0.08);
+    }
+
+    .actions {
+      margin-top: 18px;
+      display: grid;
+      gap: 10px;
+    }
+
+    button {
+      display: block;
+      width: 100%;
+      padding: 15px 20px;
+      border: 1px solid var(--gold);
+      border-radius: 10px;
+      background: linear-gradient(180deg, #c9aa73, #a77d4d);
+      color: #100d09;
+      font: 700 15px/1.2 Arial, Helvetica, sans-serif;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: transform 0.15s ease, filter 0.15s ease;
+      box-shadow: 0 12px 22px rgba(198,166,107,0.18);
+    }
+
+    button:hover {
+      filter: brightness(1.03);
+      transform: translateY(-1px);
+    }
+
+    button:active {
+      transform: translateY(0);
+    }
+
+    button.secondary {
+      background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
+      color: var(--paper);
+      border-color: rgba(198,166,107,0.5);
+      box-shadow: none;
+    }
+
+    .status {
+      display: none;
+      margin-top: 18px;
+      padding: 14px 16px;
+      border: 1px solid rgba(198,166,107,0.45);
+      border-radius: 10px;
+      background: rgba(198,166,107,0.06);
+      color: var(--paper);
+      overflow-wrap: anywhere;
+    }
+
+    .status strong {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--gold);
+      font-family: Arial, Helvetica, sans-serif;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-size: 0.72rem;
+    }
+
+    .status pre {
+      margin: 10px 0 0;
+      white-space: pre-wrap;
+      overflow-wrap: anywhere;
+      font: inherit;
+      color: var(--paper);
+      line-height: 1.55;
+    }
+
+    .status p {
+      margin: 10px 0 0;
+      color: var(--paper);
+    }
+
+    .footer {
+      padding: 24px 10px 10px;
+      border-top: 1px solid var(--line);
+      text-align: center;
+      color: var(--muted);
+      font: 700 11px/1.5 Arial, Helvetica, sans-serif;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+    }
+
+    @media (max-width: 560px) {
+      body {
+        padding: 12px 8px;
+      }
+
+      .dossier-inner {
+        padding-left: 12px;
+        padding-right: 12px;
+      }
+
+      .topbar {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+        letter-spacing: 0.18em;
+      }
+
+      .header h1 {
+        letter-spacing: 0.02em;
+      }
+
+      .meta strong {
+        display: block;
+        width: auto;
+        margin-bottom: 4px;
+      }
+    }
+  </style>
 </head>
 <body>
-<main class="dossier">
-  <div class="agency">SB Agency</div>
-  <div class="classification">CONFIDENTIAL — EYES ONLY</div>
-  <h1>Operation: Midnight Rendezvous</h1>
-  <p class="subtitle">Communiqué 03 · Final Response</p>
-  <hr class="rule">
+  <main class="dossier-shell">
+    <div class="dossier-inner">
+      <div class="topbar">
+        <div class="seal">SB Agency</div>
+        <div class="status-tag">Classified</div>
+      </div>
 
-  <p class="intro">
-    <strong>To:</strong> Special Agent 18094<br>
-    <strong>From:</strong> Handler Paul<br>
-    <strong>Subject:</strong> Final mission preference
-  </p>
+      <header class="header">
+        <p class="subject">Dossier 03 · Final Transmission</p>
+        <h1>Midnight Rendezvous</h1>
+        <p class="subtitle">Operation Report · Restricted Access</p>
+      </header>
 
-  <p>
-    Agent 18094, so happy you made it to this step. 
-Paul eagerly awaits returning to you. Not just to see you but to truly reconnect.
-And see your massive Assets.
-He's been dreaming of what to do with them for days.
-Please select the category of revealing your assets you chose in Communiqué 02.
-    Then select your preferred option from that category. 
-Whether this comes to fruition or not, play along.
-This builds anticipation and spice to our reconnection. 
-Your final selection will be prepared for transmission to Handler Paul via various apps like the previous comms.
-  </p>
+      <div class="content">
+        <div class="meta">
+          <div><strong>To:</strong> Special Agent 18094</div>
+          <div><strong>From:</strong> Handler Paul</div>
+          <div><strong>Subject:</strong> Final mission preference</div>
+        </div>
 
-  <div class="instructions">
-    <strong>Instructions</strong><br>
-    First choose your mission category. The corresponding options will
-    appear below. Select one final option, then transmit your reply.
-  </div>
+        <p class="intro">
+          Agent 18094, so happy you made it to this step. Paul eagerly awaits returning to you.
+          Not just to see you but to truly reconnect. And see your massive assets. He's been
+          dreaming of what to do with them for days. Please select the category of revealing your
+          assets you chose in Communiqué 02. Then select your preferred option from that category.
+          Whether this comes to fruition or not, play along. This builds anticipation and spice to
+          our reconnection. Your final selection will be prepared for transmission to Handler Paul
+          via various apps like the previous comms.
+        </p>
 
-  <form id="finalForm">
-    <label class="field-label" for="category">Mission category</label>
-    <select id="category" required>
-      <option value="">Choose your category...</option>
-      <option value="Trench Coat Cover-Up">Trench Coat Cover-Up</option>
-      <option value="Northwoods Remembered">Northwoods Remembered</option>
-      <option value="Cozy Agent Comfort">Cozy Agent Comfort</option>
-      <option value="Hot Tub Debrief">Hot Tub Debrief</option>
-      <option value="Basement Safehouse">Basement Safehouse</option>
-      <option value="Bedroom Retreat">Bedroom Retreat</option>
-    </select>
+        <div class="instructions">
+          <strong>Instructions</strong><br />
+          First choose your mission category. The corresponding options will appear below.
+          Select one final option, then transmit your reply.
+        </div>
 
-    <h2 style="margin-top:22px">Choose your preferred option</h2>
-    <div id="options">
-      <p style="color:#646b62;font-size:14px">
-        Select a category above to view its two options.
-      </p>
+        <form id="finalForm" class="form-wrap">
+          <label class="field-label" for="category">Mission Category</label>
+          <select id="category" required>
+            <option value="">Choose your category...</option>
+            <option value="Trench Coat Cover-Up">Trench Coat Cover-Up</option>
+            <option value="Northwoods Remembered">Northwoods Remembered</option>
+            <option value="Cozy Agent Comfort">Cozy Agent Comfort</option>
+            <option value="Hot Tub Debrief">Hot Tub Debrief</option>
+            <option value="Basement Safehouse">Basement Safehouse</option>
+            <option value="Bedroom Retreat">Bedroom Retreat</option>
+          </select>
+
+          <h2>Preferred Option</h2>
+          <div id="options">
+            <p style="color:#a7b0a7; font-size:14px; margin:0;">
+              Select a category above to view its two options.
+            </p>
+          </div>
+
+          <label class="field-label" for="agentNote">Optional Field Note</label>
+          <textarea id="agentNote" placeholder="Add a brief note for Handler Paul, if desired..."></textarea>
+
+          <div class="actions">
+            <button type="button" id="shareButton">Transmit Reply</button>
+            <button type="button" class="secondary" id="previewButton">Review Transmission</button>
+          </div>
+        </form>
+
+        <div id="status" class="status" role="status" aria-live="polite"></div>
+      </div>
+
+      <div class="footer">
+        SB Agency · Operation: Midnight Rendezvous<br />
+        Authorized Personnel Only
+      </div>
     </div>
-
-    <label class="field-label" for="agentNote">Optional message to Handler</label>
-    <textarea id="agentNote" placeholder="Add a note for Handler Paul, if desired..."></textarea>
-
-    <button type="button" id="shareButton">Transmit Agent's Reply</button>
-    <button type="button" class="secondary" id="previewButton">Review Reply Before Sharing</button>
-  </form>
-
-  <div id="status" class="status" role="status" aria-live="polite"></div>
-  <hr class="rule">
-  <p class="small-print">
-    SB AGENCY · OPERATION: MIDNIGHT RENDEZVOUS<br>
-    AUTHORIZED PERSONNEL ONLY
-  </p>
-</main>
+  </main>
 
   <script>
-const optionSets = {
-  "Trench Coat Cover-Up": [
-    "White Elegance — White sheer top sans bra or optional with bra that will be removed. I want you to see my nipples before we get home.",
-    "Black Noir — Black sheer top sans bra, or optional with bra that will be removed. I want you to see my nipples before we get home."
-  ],
-  "Northwoods Remembered": [
-    "Crimson Field Agent — Button down flannel with red lace cup bra. I love showing my cleavage off for you and this bra shows that off. I may even remove it on our way home.",
-    "Northwoods After Hours — Flannel shirt with Paul's blue cutout shirt underneath. Just like I wore on our earlier trip. I love giving you easy access to see my assets."
-  ],
-  "Cozy Agent Comfort": [
-    "Soft Landing — Zip up sweatshirt sans bra making it easy for me to reveal my assets to you.",
-    "Durango Comfort Kit — Low cut shirt that opens easy. Particularly useful when I lean over to reveal my assets."
-  ],
-  "Hot Tub Debrief": [
-    "Halter Top Reveal — Black suit that easily undone to reveal my massive bazookas for Paul to admire.",
-    "Midnight Tip — More than just showing off my bazookas, I'll show you my boobs and I want you inside me."
-  ],
-  "Basement Safehouse": [
-    "Connection & Cuddles — Hang the door sign for date-night, sit on the couch to talk and caress under cozy blanket.",
-    "Body Heat — Standing, slow dancing and touching each other."
-  ],
-  "Bedroom Retreat": [
-    "Quiet Reconnection — Relax naked on bed and cuddle-sex.",
-    "Boss Me Around — I want you to assert yourself on me and tell me how you want me."
-  ]
-};
+    const optionSets = {
+      "Trench Coat Cover-Up": [
+        "White Elegance — White sheer top sans bra or optional with bra that will be removed. I want you to see my nipples before we get home.",
+        "Black Noir — Black sheer top sans bra, or optional with bra that will be removed. I want you to see my nipples before we get home."
+      ],
+      "Northwoods Remembered": [
+        "Crimson Field Agent — Button down flannel with red lace cup bra. I love showing my cleavage off for you and this bra shows that off. I may even remove it on our way home.",
+        "Northwoods After Hours — Flannel shirt with Paul's blue cutout shirt underneath. Just like I wore on our earlier trip. I love giving you easy access to see my assets."
+      ],
+      "Cozy Agent Comfort": [
+        "Soft Landing — Zip up sweatshirt sans bra making it easy for me to reveal my assets to you.",
+        "Durango Comfort Kit — Low cut shirt that opens easy. Particularly useful when I lean over to reveal my assets."
+      ],
+      "Hot Tub Debrief": [
+        "Halter Top Reveal — Black suit that easily undone to reveal my massive bazookas for Paul to admire.",
+        "Midnight Tip — More than just showing off my bazookas, I'll show you my boobs and I want you inside me."
+      ],
+      "Basement Safehouse": [
+        "Connection & Cuddles — Hang the door sign for date-night, sit on the couch to talk and caress under cozy blanket.",
+        "Body Heat — Standing, slow dancing and touching each other."
+      ],
+      "Bedroom Retreat": [
+        "Quiet Reconnection — Relax naked on bed and cuddle-sex.",
+        "Boss Me Around — I want you to assert yourself on me and tell me how you want me."
+      ]
+    };
 
-const category = document.getElementById("category");
-const optionsBox = document.getElementById("options");
-const statusBox = document.getElementById("status");
+    const category = document.getElementById("category");
+    const optionsBox = document.getElementById("options");
+    const statusBox = document.getElementById("status");
 
-category.addEventListener("change", function () {
-  optionsBox.replaceChildren();
+    function renderOptions() {
+      optionsBox.replaceChildren();
 
-  const choices = optionSets[category.value];
+      const selectedCategory = category.value;
+      const choices = optionSets[selectedCategory];
 
-  if (!choices) {
-    optionsBox.innerHTML = '<p style="color:#646b62;font-size:14px">Select a category above to view its two options.</p>';
-    return;
-  }
+      if (!choices) {
+        optionsBox.innerHTML = '<p style="color:#a7b0a7; font-size:14px; margin:0;">Select a category above to view its two options.</p>';
+        return;
+      }
 
-  choices.forEach(function (option) {
-    const label = document.createElement("label");
-    label.className = "choice";
+      choices.forEach(function (option) {
+        const label = document.createElement("label");
+        label.className = "choice";
 
-    const radio = document.createElement("input");
-    radio.type = "radio";
-    radio.name = "finalOption";
-    radio.value = option;
-    radio.required = true;
+        const radio = document.createElement("input");
+        radio.type = "radio";
+        radio.name = "finalOption";
+        radio.value = option;
+        radio.required = true;
 
-    const text = document.createElement("span");
-    text.textContent = option;
+        const text = document.createElement("span");
+        text.className = "option-text";
+        text.textContent = option;
 
-    label.appendChild(radio);
-    label.appendChild(text);
-    optionsBox.appendChild(label);
-  });
-});
+        label.appendChild(radio);
+        label.appendChild(text);
+        optionsBox.appendChild(label);
 
-function getReply() {
-  const selectedCategory = category.value;
-  const selectedOption = document.querySelector('input[name="finalOption"]:checked');
-
-  if (!selectedCategory) {
-    statusBox.style.display = "block";
-    statusBox.textContent = "Please choose a mission category first.";
-    return null;
-  }
-
-  if (!selectedOption) {
-    statusBox.style.display = "block";
-    statusBox.textContent = "Please choose one of the two options for your category.";
-    return null;
-  }
-
-  const note = document.getElementById("agentNote").value.trim();
-
-  let message =
-    "SB AGENCY — CONFIDENTIAL REPLY\n" +
-    "Operation: Midnight Rendezvous\n" +
-    "Communiqué 03 — Final Response\n\n" +
-    "From: Agent 18094\n" +
-    "To: Handler Paul\n\n" +
-    "Mission category: " + selectedCategory + "\n" +
-    "Final selection: " + selectedOption.value + "\n";
-
-  if (note) {
-    message += "\nMessage to Handler:\n" + note + "\n";
-  }
-
-  message += "\nAgent 18094 has submitted her final mission preference.";
-  return message;
-}
-
-function showPreview(message) {
-  statusBox.style.display = "block";
-  statusBox.replaceChildren();
-
-  const heading = document.createElement("strong");
-  heading.textContent = "Agent's final reply";
-  statusBox.appendChild(heading);
-
-  const preview = document.createElement("pre");
-  preview.textContent = message;
-  statusBox.appendChild(preview);
-
-  statusBox.scrollIntoView({ behavior: "smooth", block: "nearest" });
-}
-
-document.getElementById("previewButton").addEventListener("click", function () {
-  const message = getReply();
-  if (message) showPreview(message);
-});
-
-document.getElementById("shareButton").addEventListener("click", async function () {
-  const message = getReply();
-  if (!message) return;
-
-  if (navigator.share) {
-    try {
-      await navigator.share({
-        title: "SB Agency — Final Response",
-        text: message
+        radio.addEventListener("change", function () {
+          document.querySelectorAll(".choice").forEach(function (choiceNode) {
+            choiceNode.classList.toggle("selected", choiceNode.contains(radio));
+          });
+        });
       });
-    } catch (error) {
-      if (error.name !== "AbortError") {
-        statusBox.style.display = "block";
-        statusBox.textContent =
-          "Sharing could not be opened. Please try again or use Review Reply Before Sharing.";
-      }
     }
-  } else {
-    showPreview(message);
 
-    const notice = document.createElement("p");
-    notice.textContent =
-      "Sharing is not supported in this browser. Copy the reply below and paste it into your preferred messaging app.";
-    statusBox.appendChild(notice);
-
-    const copyButton = document.createElement("button");
-    copyButton.type = "button";
-    copyButton.textContent = "Copy Reply";
-
-    copyButton.addEventListener("click", async function () {
-      try {
-        await navigator.clipboard.writeText(message);
-        copyButton.textContent = "Reply Copied";
-      } catch (error) {
-        const textArea = document.createElement("textarea");
-        textArea.value = message;
-        statusBox.appendChild(textArea);
-        textArea.focus();
-        textArea.select();
-      }
+    category.addEventListener("change", function () {
+      document.querySelectorAll('input[name="finalOption"]').forEach(function (radio) {
+        radio.checked = false;
+      });
+      renderOptions();
     });
 
-    statusBox.appendChild(copyButton);
-  }
-});
-</script>
+    function showStatus(message) {
+      statusBox.style.display = "block";
+      statusBox.replaceChildren();
 
-const category = document.getElementById("category");
-const optionsBox = document.getElementById("options");
-const statusBox = document.getElementById("status");
-
-category.addEventListener("change", function() {
-  optionsBox.replaceChildren();
-  const choices = optionSets[category.value];
-
-  if (!choices) {
-    optionsBox.textContent = "Select a category above to view its options.";
-    return;
-  }
-
-  choices.forEach(function(option, index) {
-    const label = document.createElement("label");
-    label.className = "choice";
-
-    const radio = document.createElement("input");
-    radio.type = "radio";
-    radio.name = "finalOption";
-    radio.value = option;
-    radio.required = true;
-
-    const text = document.createElement("span");
-    text.textContent = option;
-
-    label.appendChild(radio);
-    label.appendChild(text);
-    optionsBox.appendChild(label);
-  });
-});
-
-function getReply() {
-  const selectedCategory = category.value;
-  const selectedOption = document.querySelector('input[name="finalOption"]:checked');
-
-  if (!selectedCategory) {
-    statusBox.style.display = "block";
-    statusBox.textContent = "Please choose a mission category first.";
-    return null;
-  }
-
-  if (!selectedOption) {
-    statusBox.style.display = "block";
-    statusBox.textContent = "Please choose one of the two options for your category.";
-    return null;
-  }
-
-  const note = document.getElementById("agentNote").value.trim();
-
-  let message =
-    "SB AGENCY — CONFIDENTIAL REPLY\n" +
-    "Operation: Midnight Rendezvous\n" +
-    "Communiqué 03 — Final Response\n\n" +
-    "From: Agent 18094\n" +
-    "To: Handler Paul\n\n" +
-    "Mission category: " + selectedCategory + "\n" +
-    "Final selection: " + selectedOption.value + "\n";
-
-  if (note) {
-    message += "\nMessage to Handler:\n" + note + "\n";
-  }
-
-  message += "\nAgent 18094 has submitted her final mission preference.";
-  return message;
-}
-
-function showPreview(message) {
-  statusBox.style.display = "block";
-  statusBox.replaceChildren();
-
-  const heading = document.createElement("strong");
-  heading.textContent = "Agent's final reply";
-  statusBox.appendChild(heading);
-
-  const preview = document.createElement("pre");
-  preview.textContent = message;
-  statusBox.appendChild(preview);
-
-  statusBox.scrollIntoView({behavior:"smooth", block:"nearest"});
-}
-
-document.getElementById("previewButton").addEventListener("click", function() {
-  const message = getReply();
-  if (message) showPreview(message);
-});
-
-document.getElementById("shareButton").addEventListener("click", async function() {
-  const message = getReply();
-  if (!message) return;
-
-  if (navigator.share) {
-    try {
-      await navigator.share({
-        title: "SB Agency — Final Response",
-        text: message
-      });
-    } catch (error) {
-      if (error.name !== "AbortError") {
-        statusBox.style.display = "block";
-        statusBox.textContent =
-          "Sharing could not be opened. Please try again or use Review Reply Before Sharing.";
-      }
+      const text = document.createElement("div");
+      text.textContent = message;
+      statusBox.appendChild(text);
     }
-  } else {
-    showPreview(message);
 
-    const notice = document.createElement("p");
-    notice.textContent =
-      "Sharing is not supported in this browser. Copy the reply below " +
-      "and paste it into your preferred messaging app.";
-    statusBox.appendChild(notice);
+    function getReply() {
+      const selectedCategory = category.value;
+      const selectedOption = document.querySelector('input[name="finalOption"]:checked');
 
-    const copyButton = document.createElement("button");
-    copyButton.type = "button";
-    copyButton.textContent = "Copy Reply";
-
-    copyButton.addEventListener("click", async function() {
-      try {
-        await navigator.clipboard.writeText(message);
-        copyButton.textContent = "Reply Copied";
-      } catch (error) {
-        const textArea = document.createElement("textarea");
-        textArea.value = message;
-        statusBox.appendChild(textArea);
-        textArea.focus();
-        textArea.select();
+      if (!selectedCategory) {
+        showStatus("Please choose a mission category first.");
+        return null;
       }
+
+      if (!selectedOption) {
+        showStatus("Please choose one of the two options for your category.");
+        return null;
+      }
+
+      const note = document.getElementById("agentNote").value.trim();
+
+      let message =
+        "SB AGENCY — CONFIDENTIAL REPLY\n" +
+        "Operation: Midnight Rendezvous\n" +
+        "Communiqué 03 — Final Response\n\n" +
+        "From: Agent 18094\n" +
+        "To: Handler Paul\n\n" +
+        "Mission category: " + selectedCategory + "\n" +
+        "Final selection: " + selectedOption.value + "\n";
+
+      if (note) {
+        message += "\nMessage to Handler:\n" + note + "\n";
+      }
+
+      message += "\nAgent 18094 has submitted her final mission preference.";
+      return message;
+    }
+
+    function showPreview(message) {
+      statusBox.style.display = "block";
+      statusBox.replaceChildren();
+
+      const heading = document.createElement("strong");
+      heading.textContent = "Transmission Preview";
+      statusBox.appendChild(heading);
+
+      const preview = document.createElement("pre");
+      preview.textContent = message;
+      statusBox.appendChild(preview);
+
+      statusBox.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    }
+
+    document.getElementById("previewButton").addEventListener("click", function () {
+      const message = getReply();
+      if (message) showPreview(message);
     });
 
-    statusBox.appendChild(copyButton);
-  }
-});
-</script>
+    document.getElementById("shareButton").addEventListener("click", async function () {
+      const message = getReply();
+      if (!message) return;
+
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: "SB Agency — Final Response",
+            text: message
+          });
+        } catch (error) {
+          if (error.name !== "AbortError") {
+            showStatus("Sharing could not be opened. Please try again or use Review Transmission.");
+          }
+        }
+      } else {
+        showPreview(message);
+
+        const notice = document.createElement("p");
+        notice.textContent =
+          "Sharing is not supported in this browser. Copy the reply below and paste it into your preferred messaging app.";
+        statusBox.appendChild(notice);
+
+        const copyButton = document.createElement("button");
+        copyButton.type = "button";
+        copyButton.textContent = "Copy Reply";
+        copyButton.className = "secondary";
+
+        copyButton.addEventListener("click", async function () {
+          try {
+            await navigator.clipboard.writeText(message);
+            copyButton.textContent = "Reply Copied";
+          } catch (error) {
+            const textArea = document.createElement("textarea");
+            textArea.value = message;
+            statusBox.appendChild(textArea);
+            textArea.focus();
+            textArea.select();
+          }
+        });
+
+        statusBox.appendChild(copyButton);
+      }
+    });
+  </script>
 </body>
 </html>
