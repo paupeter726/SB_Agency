@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#203b2b"><title>SB Agency | Communiqué 01</title><style>
+:root{--forest:#203b2b;--paper:#f6efdd;--ink:#1d281f;--muted:#66705f;--gold:#b9a36b;--red:#813a31;--line:#cbbd9b}
+*{box-sizing:border-box}body{margin:0;background:#e8e5d9;color:var(--ink);font-family:system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.5}
+main{width:min(100%,680px);margin:auto;padding:14px 12px 30px}.sheet{background:var(--paper);border:1px solid var(--line);box-shadow:0 8px 26px #18231b12}
+header{background:var(--forest);color:var(--paper);padding:18px;display:flex;justify-content:space-between;gap:12px;align-items:center;border-bottom:3px double var(--gold)}
+.brand{font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#e5d5a3}.stamp{border:1px solid var(--gold);padding:5px 7px;font-size:9px;letter-spacing:.12em;font-weight:800;white-space:nowrap}
+.content{padding:22px 17px}.eyebrow{font-size:10px;letter-spacing:.16em;text-transform:uppercase;font-weight:800;color:var(--red)}
+h1{font:700 clamp(30px,8vw,44px)/1.04 Georgia,serif;color:var(--forest);margin:10px 0 12px}.lede{font-size:15px;color:#384337}
+.notice{background:#eee4cc;border-left:4px solid var(--red);padding:13px;margin:18px 0;font-size:13px}
+fieldset{border:0;padding:0;margin:22px 0;min-width:0}legend{font-size:18px;font-weight:800;color:var(--forest);margin-bottom:5px}.hint{font-size:12px;color:var(--muted);margin:0 0 10px}
+.option{display:flex;gap:12px;align-items:flex-start;padding:14px 13px;margin:9px 0;background:#fffaf0;border:1.5px solid var(--line);border-radius:10px;cursor:pointer;min-height:64px}
+.option:has(input:checked){border-color:var(--forest);background:#e6eddf;box-shadow:inset 0 0 0 1px var(--forest)}
+.option input[type=radio]{width:20px;height:20px;accent-color:var(--forest);flex:0 0 auto;margin:2px 0 0}
+.option-title{display:block;font-size:15px;font-weight:800;color:var(--forest)}.option-desc{display:block;font-size:12px;color:#596253;margin-top:3px}
+textarea,input[type=text]{width:100%;border:1px solid var(--line);border-radius:7px;background:#fffaf0;color:var(--ink);font:14px/1.45 system-ui,sans-serif;padding:10px;margin-top:7px}
+.actions{display:grid;gap:9px;margin-top:20px}button{font:inherit;cursor:pointer;touch-action:manipulation}.primary,.secondary{border-radius:9px;padding:13px 15px;min-height:48px;font-size:14px;font-weight:800}
+.primary{border:0;background:var(--forest);color:#fff8e8}.secondary{border:1px solid var(--forest);background:transparent;color:var(--forest)}
+.status{display:none;margin-top:14px;padding:12px;background:#e6eddf;border:1px solid #b6c7ae;border-radius:8px;font-size:13px;white-space:pre-wrap;overflow-wrap:anywhere}.status.visible{display:block}
+footer{text-align:center;color:var(--muted);font-size:10px;letter-spacing:.08em;text-transform:uppercase;padding:16px 8px}
+@media(min-width:520px){main{padding:24px 16px}.content{padding:28px}.actions{grid-template-columns:1fr 1fr}}
+</style></head>
+<body><main><article class="sheet"><header><div class="brand">SB Agency<br>Handler-to-Agent Communiqué</div><div class="stamp">CONFIDENTIAL · EYES ONLY</div></header>
+<div class="content"><div class="eyebrow">Confidential Personal Transmission · 01</div><h1>Midnight<br>Rendezvous</h1><p class="lede"><strong>To: Agent 18094 · From: Handler Paul.</strong> Agent, this first communication establishes the preferred rendezvous route for Wednesday night.</p><div class="notice"><strong>Timing note:</strong> Handler Paul is scheduled to arrive at MSP at 10:50 PM. This is the flight arrival time, not the curbside pickup time. If Airport Extraction is selected, pickup follows baggage retrieval and the Handler’s ready message. Communications 02 and 03 will provide the mission category and final response.</div>
+<form id="comm-form">
+<fieldset><legend>Transmission 1 · Select rendezvous protocol</legend><p class="hint">Agent 18094, choose the preferred route for Wednesday night.</p>
+<label class="option"><input type="radio" name="route" value="Path 01 — Airport Extraction"><span><span class="option-title">Path 01 — Airport Extraction</span><span class="option-desc">Agent 18094 picks up Handler Paul curbside at MSP after baggage retrieval.</span></span></label>
+<label class="option"><input type="radio" name="route" value="Path 02 — Home Rendezvous"><span><span class="option-title">Path 02 — Home Rendezvous</span><span class="option-desc">Handler Paul returns to Fresno Gardens HQ and reconnects with Agent 18094 at home.</span></span></label>
+</fieldset>
+<label class="option" style="display:block"><span><span class="option-title">Optional note to Handler</span><span class="option-desc">Add a preference or question for the next transmission.</span><textarea name="note" rows="3" placeholder="Agent 18094’s note…"></textarea></span></label>
+<div class="actions"><button class="primary" type="button" id="share">Transmit Agent’s Reply</button><button class="secondary" type="button" id="share-comm">Forward Communiqué</button></div><div id="status" class="status" role="status" aria-live="polite"></div></form></div></article><footer>SB Agency · Communiqué 01 of 03 · Select rendezvous protocol · Stand by for successive communications</footer></main><script>
+const form=document.getElementById('comm-form'), statusBox=document.getElementById('status');
+function showStatus(s){statusBox.textContent=s;statusBox.classList.add('visible')}
+async function share(text,title){
+ try{if(navigator.share){await navigator.share({title,text});showStatus('Share menu opened. Choose a message app to send this transmission.')}
+ else if(navigator.clipboard&&navigator.clipboard.writeText){await navigator.clipboard.writeText(text);showStatus('Transmission copied. Paste it into a message to Handler Paul.')}
+ else showStatus('Copy and send this transmission:\n\n'+text)}
+ catch(e){if(e.name!=='AbortError')showStatus('Copy and send this transmission:\n\n'+text)}
+}
+
+document.getElementById('share').addEventListener('click',()=>{
+ const r=form.querySelector('input[name="route"]:checked');if(!r){showStatus('Select Airport Extraction or Home Rendezvous before transmitting.');return}
+ const note=form.querySelector('[name="note"]').value.trim();
+ share('SB AGENCY — CONFIDENTIAL COMMUNIQUÉ 01\nOperation: Midnight Rendezvous\nFrom: Agent 18094\nSelected rendezvous protocol: '+r.value+(note?'\nAgent’s note: '+note:'')+'\n\nHandler Paul is scheduled to arrive at MSP Wednesday at 10:50 PM. Airport pickup follows baggage retrieval and confirmation. Further requirements will arrive in successive communications.','Communiqué 01 — Agent Reply');
+});
+document.getElementById('share-comm').addEventListener('click',()=>share('SB AGENCY — CONFIDENTIAL COMMUNIQUÉ 01\nOperation: Midnight Rendezvous\nAgent 18094: choose one route.\n\n1. Airport Extraction — curbside pickup after baggage retrieval.\n2. Home Rendezvous — reconnect at Fresno Gardens HQ.\n\nScheduled MSP arrival: Wednesday, 10:50 PM. Additional requirements and instructions will arrive in successive communications.','Communiqué 01 — Rendezvous Protocol'));
+</script></body></html>
