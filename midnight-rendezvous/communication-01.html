@@ -1,14 +1,16 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#234b38">
   <title>SB Agency | Rendezvous Protocol</title>
 
   <style>
     :root {
       --green: #234b38;
-      --green-dark: #163324;
+      --dark-green: #163324;
       --cream: #f5f0e3;
       --paper: #fffdf7;
       --ink: #252b25;
@@ -32,9 +34,9 @@
     .dossier {
       max-width: 680px;
       margin: 0 auto;
+      padding: 24px;
       background: var(--paper);
       border: 1px solid var(--border);
-      padding: 24px;
       box-shadow: 0 5px 18px rgba(0, 0, 0, 0.08);
     }
 
@@ -49,11 +51,11 @@
     }
 
     .classification {
-      margin: 18px auto;
       width: fit-content;
+      margin: 18px auto;
+      padding: 5px 12px;
       border: 2px solid #9a3930;
       color: #9a3930;
-      padding: 5px 12px;
       font-family: Arial, sans-serif;
       font-size: 12px;
       font-weight: bold;
@@ -63,16 +65,16 @@
 
     h1 {
       margin: 12px 0 4px;
+      color: var(--dark-green);
       text-align: center;
-      color: var(--green-dark);
       font-size: clamp(25px, 5vw, 34px);
       line-height: 1.2;
     }
 
     .subtitle {
       margin: 0 0 24px;
-      text-align: center;
       color: var(--muted);
+      text-align: center;
       font-family: Arial, sans-serif;
       font-size: 13px;
     }
@@ -84,9 +86,9 @@
     }
 
     h2 {
+      margin: 0 0 10px;
       color: var(--green);
       font-size: 19px;
-      margin: 0 0 10px;
     }
 
     .intro {
@@ -94,22 +96,21 @@
     }
 
     .details {
+      margin: 18px 0;
+      padding: 12px 15px;
       background: #f0eee4;
       border-left: 4px solid var(--green);
-      padding: 12px 15px;
-      margin: 18px 0;
       font-size: 14px;
     }
 
     .choice {
       display: block;
+      margin: 12px 0;
+      padding: 15px;
       border: 1px solid var(--border);
       border-radius: 5px;
-      padding: 15px;
-      margin: 12px 0;
-      cursor: pointer;
       background: white;
-      transition: border-color 0.15s, background 0.15s;
+      cursor: pointer;
     }
 
     .choice:has(input:checked) {
@@ -124,22 +125,22 @@
     }
 
     .choice-title {
-      font-weight: bold;
+      color: var(--dark-green);
       font-size: 17px;
-      color: var(--green-dark);
+      font-weight: bold;
     }
 
     .choice-description {
       display: block;
       margin: 7px 0 0 25px;
-      font-size: 14px;
       color: #454b44;
+      font-size: 14px;
     }
 
-    label.field-label {
+    .field-label {
       display: block;
-      font-weight: bold;
       margin: 16px 0 7px;
+      font-weight: bold;
     }
 
     textarea {
@@ -149,16 +150,16 @@
       padding: 11px;
       border: 1px solid var(--border);
       border-radius: 4px;
-      font: inherit;
       background: white;
+      font: inherit;
       resize: vertical;
     }
 
     button {
       display: block;
       width: 100%;
-      padding: 13px 16px;
       margin-top: 12px;
+      padding: 14px 16px;
       border: none;
       border-radius: 4px;
       background: var(--green);
@@ -169,40 +170,46 @@
     }
 
     button:hover {
-      background: var(--green-dark);
+      background: var(--dark-green);
     }
 
     button.secondary {
-      background: #e7e5da;
-      color: var(--green-dark);
       border: 1px solid var(--border);
+      background: #e7e5da;
+      color: var(--dark-green);
     }
 
     .status {
+      display: none;
       margin-top: 15px;
       padding: 12px;
-      background: #edf3ed;
       border: 1px solid #aabbaa;
       border-radius: 4px;
-      display: none;
+      background: #edf3ed;
       overflow-wrap: anywhere;
     }
 
+    .status pre {
+      white-space: pre-wrap;
+      overflow-wrap: anywhere;
+      font-family: inherit;
+    }
+
     .small-print {
+      margin-top: 22px;
       color: var(--muted);
+      text-align: center;
       font-family: Arial, sans-serif;
       font-size: 12px;
-      text-align: center;
-      margin-top: 22px;
     }
 
     @media (max-width: 480px) {
-      .dossier {
-        padding: 18px 15px;
-      }
-
       body {
         padding: 10px 6px;
+      }
+
+      .dossier {
+        padding: 18px 15px;
       }
     }
   </style>
@@ -211,11 +218,9 @@
 <body>
   <main class="dossier">
     <div class="agency">SB Agency</div>
-
     <div class="classification">CONFIDENTIAL — EYES ONLY</div>
 
     <h1>Operation: Midnight Rendezvous</h1>
-
     <p class="subtitle">
       Communiqué 01 · Rendezvous Protocol
     </p>
@@ -229,19 +234,20 @@
     </p>
 
     <p>
-      Agent 18094, your Handler requires confirmation of the preferred
-      rendezvous protocol upon his return. Review the available routes
-      and transmit your selection below.
+      Agent 18094, your Handler requires confirmation of the
+      preferred rendezvous protocol upon his return. Review the
+      available routes and transmit your selection below.
     </p>
 
     <div class="details">
       <strong>Flight intelligence</strong><br>
-      Scheduled arrival at Minneapolis–Saint Paul International Airport
-      (MSP): Wednesday, 10:50 PM.<br><br>
-      <em>Note: This is the scheduled flight arrival time, not the
-      curbside pickup time. For airport extraction, the Handler will
-      send a message once he has collected his baggage and is ready
-      for pickup.</em>
+      Scheduled arrival at Minneapolis–Saint Paul International
+      Airport (MSP): Wednesday, 10:50 PM.<br><br>
+      <em>
+        This is the scheduled flight arrival time, not the curbside
+        pickup time. For airport extraction, the Handler will send
+        a message after collecting his baggage and when ready for pickup.
+      </em>
     </div>
 
     <form id="rendezvousForm">
@@ -254,11 +260,13 @@
           value="Path 01 — Airport Extraction"
           required
         >
-        <span class="choice-title">Path 01 — Airport Extraction</span>
+        <span class="choice-title">
+          Path 01 — Airport Extraction
+        </span>
         <span class="choice-description">
-          Agent 18094 conducts pickup at MSP curbside after the Handler
-          retrieves his baggage and sends a ready message. The exact
-          pickup point will be coordinated by message.
+          Agent 18094 picks up Handler Paul at MSP curbside after
+          he retrieves his baggage and sends a ready message.
+          The exact pickup point will be coordinated by message.
         </span>
       </label>
 
@@ -269,10 +277,12 @@
           value="Path 02 — Home Rendezvous"
           required
         >
-        <span class="choice-title">Path 02 — Home Rendezvous</span>
+        <span class="choice-title">
+          Path 02 — Home Rendezvous
+        </span>
         <span class="choice-description">
-          The Handler returns to Fresno Gardens Headquarters. Agent
-          18094 and Handler Paul reconnect at home.
+          Handler Paul returns to Fresno Gardens Headquarters.
+          Agent 18094 and Handler Paul reconnect at home.
         </span>
       </label>
 
@@ -283,21 +293,28 @@
       <textarea
         id="agentNote"
         name="agentNote"
-        placeholder="Enter any additional instructions or a message for Handler Paul..."
+        placeholder="Enter additional instructions or a message for Handler Paul..."
       ></textarea>
 
-      <button type="submit">Prepare Agent's Reply</button>
+      <button type="button" id="shareButton">
+        Transmit Agent's Reply
+      </button>
 
       <button
         type="button"
         class="secondary"
-        id="shareButton"
+        id="previewButton"
       >
-        Share Communiqué
+        Review Reply Before Sharing
       </button>
     </form>
 
-    <div id="status" class="status" role="status" aria-live="polite"></div>
+    <div
+      id="status"
+      class="status"
+      role="status"
+      aria-live="polite"
+    ></div>
 
     <hr class="rule">
 
@@ -311,6 +328,7 @@
     const form = document.getElementById("rendezvousForm");
     const statusBox = document.getElementById("status");
     const shareButton = document.getElementById("shareButton");
+    const previewButton = document.getElementById("previewButton");
 
     function getReply() {
       const selected = document.querySelector(
@@ -318,6 +336,9 @@
       );
 
       if (!selected) {
+        statusBox.style.display = "block";
+        statusBox.textContent =
+          "Please select a rendezvous protocol first.";
         return null;
       }
 
@@ -336,86 +357,80 @@
       }
 
       message +=
-        "\nThis reply confirms the Agent's selected preference. " +
-        "Coordinate final arrangements by message.";
+        "\nAgent 18094 has submitted her rendezvous preference.";
 
       return message;
     }
 
-    form.addEventListener("submit", function(event) {
-      event.preventDefault();
-
-      const message = getReply();
-
-      if (!message) {
-        statusBox.style.display = "block";
-        statusBox.textContent =
-          "Please select a rendezvous protocol before preparing your reply.";
-        return;
-      }
-
+    function showPreview(message) {
       statusBox.style.display = "block";
-      statusBox.innerHTML = "";
+      statusBox.replaceChildren();
 
       const heading = document.createElement("strong");
-      heading.textContent = "Reply prepared";
+      heading.textContent = "Agent's reply";
       statusBox.appendChild(heading);
 
       const preview = document.createElement("pre");
-      preview.style.whiteSpace = "pre-wrap";
-      preview.style.fontFamily = "inherit";
       preview.textContent = message;
       statusBox.appendChild(preview);
 
-      const copyButton = document.createElement("button");
-      copyButton.type = "button";
-      copyButton.textContent = "Copy Reply to Send to Handler";
-      copyButton.addEventListener("click", async function() {
-        try {
-          await navigator.clipboard.writeText(message);
-          copyButton.textContent = "Reply Copied";
-        } catch (error) {
-          const textArea = document.createElement("textarea");
-          textArea.value = message;
-          statusBox.appendChild(textArea);
-          textArea.focus();
-          textArea.select();
-          copyButton.textContent = "Select and Copy the Text Above";
-        }
+      statusBox.scrollIntoView({
+        behavior: "smooth",
+        block: "nearest"
       });
+    }
 
-      statusBox.appendChild(copyButton);
-      statusBox.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    previewButton.addEventListener("click", function () {
+      const message = getReply();
+      if (message) showPreview(message);
     });
 
-    shareButton.addEventListener("click", async function() {
+    shareButton.addEventListener("click", async function () {
       const message = getReply();
+      if (!message) return;
 
-      if (!message) {
-        statusBox.style.display = "block";
-        statusBox.textContent =
-          "Select a rendezvous protocol first, then share your reply.";
-        return;
-      }
-
-      try {
-        if (navigator.share) {
+      if (navigator.share) {
+        try {
           await navigator.share({
-            title: "SB Agency — Rendezvous Protocol",
+            title: "SB Agency — Midnight Rendezvous",
             text: message
           });
-        } else {
-          await navigator.clipboard.writeText(message);
-          statusBox.style.display = "block";
-          statusBox.textContent =
-            "Reply copied. Paste it into a text message to Handler Paul.";
+        } catch (error) {
+          if (error.name !== "AbortError") {
+            statusBox.style.display = "block";
+            statusBox.textContent =
+              "Sharing could not be opened. Please try again " +
+              "or use Review Reply Before Sharing.";
+          }
         }
-      } catch (error) {
-        if (error.name !== "AbortError") {
-          statusBox.style.display = "block";
-          statusBox.textContent =
-            "Sharing was unavailable. Use Prepare Agent's Reply to copy your response.";
-        }
+      } else {
+        showPreview(message);
+
+        const notice = document.createElement("p");
+        notice.textContent =
+          "Your browser does not support the share menu. " +
+          "Select and copy the reply above, then paste it into " +
+          "your preferred messaging app.";
+        statusBox.appendChild(notice);
+
+        const copyButton = document.createElement("button");
+        copyButton.type = "button";
+        copyButton.textContent = "Copy Reply";
+
+        copyButton.addEventListener("click", async function () {
+          try {
+            await navigator.clipboard.writeText(message);
+            copyButton.textContent = "Reply Copied";
+          } catch (error) {
+            const textArea = document.createElement("textarea");
+            textArea.value = message;
+            statusBox.appendChild(textArea);
+            textArea.focus();
+            textArea.select();
+          }
+        });
+
+        statusBox.appendChild(copyButton);
       }
     });
   </script>
