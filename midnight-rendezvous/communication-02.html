@@ -1,0 +1,402 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#234b38">
+  <title>SB Agency | Mission Category Selection</title>
+
+  <style>
+    :root {
+      --green: #234b38;
+      --dark: #163324;
+      --cream: #f5f0e3;
+      --paper: #fffdf7;
+      --ink: #252b25;
+      --muted: #646b62;
+      --border: #c9c5b7;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      padding: 20px 12px;
+      background: var(--cream);
+      color: var(--ink);
+      font-family: Georgia, "Times New Roman", serif;
+      line-height: 1.55;
+    }
+
+    .dossier {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 24px;
+      background: var(--paper);
+      border: 1px solid var(--border);
+      box-shadow: 0 5px 18px rgba(0,0,0,.08);
+    }
+
+    .agency {
+      text-align: center;
+      color: var(--green);
+      font: bold 13px Arial, sans-serif;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+    }
+
+    .classification {
+      width: fit-content;
+      margin: 18px auto;
+      padding: 5px 12px;
+      border: 2px solid #9a3930;
+      color: #9a3930;
+      font: bold 12px Arial, sans-serif;
+      letter-spacing: 2px;
+      transform: rotate(-2deg);
+    }
+
+    h1 {
+      margin: 12px 0 4px;
+      color: var(--dark);
+      text-align: center;
+      font-size: clamp(25px, 5vw, 34px);
+      line-height: 1.2;
+    }
+
+    .subtitle {
+      margin: 0 0 24px;
+      color: var(--muted);
+      text-align: center;
+      font: 13px Arial, sans-serif;
+    }
+
+    .rule {
+      border: 0;
+      border-top: 1px solid var(--border);
+      margin: 22px 0;
+    }
+
+    h2 {
+      margin: 0 0 10px;
+      color: var(--green);
+      font-size: 19px;
+    }
+
+    .intro { font-size: 16px; }
+
+    .instructions {
+      margin: 18px 0;
+      padding: 12px 15px;
+      background: #f0eee4;
+      border-left: 4px solid var(--green);
+      font-size: 14px;
+    }
+
+    .choice {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 12px 0;
+      padding: 15px;
+      border: 1px solid var(--border);
+      border-radius: 5px;
+      background: white;
+      cursor: pointer;
+      color: var(--dark);
+      font-size: 17px;
+      font-weight: bold;
+    }
+
+    .choice:has(input:checked) {
+      border: 2px solid var(--green);
+      background: #edf3ed;
+    }
+
+    .choice input {
+      flex: 0 0 auto;
+      accent-color: var(--green);
+      transform: scale(1.2);
+    }
+
+    .field-label {
+      display: block;
+      margin: 16px 0 7px;
+      font-weight: bold;
+    }
+
+    textarea {
+      display: block;
+      width: 100%;
+      min-height: 90px;
+      padding: 11px;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      background: white;
+      font: inherit;
+      resize: vertical;
+    }
+
+    button {
+      display: block;
+      width: 100%;
+      margin-top: 12px;
+      padding: 14px 16px;
+      border: 0;
+      border-radius: 4px;
+      background: var(--green);
+      color: white;
+      font-size: 15px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    button:hover { background: var(--dark); }
+
+    button.secondary {
+      border: 1px solid var(--border);
+      background: #e7e5da;
+      color: var(--dark);
+    }
+
+    .status {
+      display: none;
+      margin-top: 15px;
+      padding: 12px;
+      border: 1px solid #aabbaa;
+      border-radius: 4px;
+      background: #edf3ed;
+      overflow-wrap: anywhere;
+    }
+
+    .status pre {
+      white-space: pre-wrap;
+      overflow-wrap: anywhere;
+      font-family: inherit;
+    }
+
+    .small-print {
+      margin-top: 22px;
+      color: var(--muted);
+      text-align: center;
+      font: 12px Arial, sans-serif;
+    }
+
+    @media (max-width: 480px) {
+      body { padding: 10px 6px; }
+      .dossier { padding: 18px 15px; }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="dossier">
+    <div class="agency">SB Agency</div>
+    <div class="classification">CONFIDENTIAL — EYES ONLY</div>
+
+    <h1>Operation: Midnight Rendezvous</h1>
+    <p class="subtitle">
+      Communiqué 02 · Mission Category Selection
+    </p>
+
+    <hr class="rule">
+
+    <p class="intro">
+      <strong>To:</strong> Special Agent 18094<br>
+      <strong>From:</strong> Handler Paul<br>
+      <strong>Subject:</strong> Mission category selection
+    </p>
+
+    <p>
+      Agent 18094, select the mission category that best fits your
+      preferred direction for the next phase of Operation: Midnight
+      Rendezvous. Your selection will be prepared for transmission
+      to Handler Paul.
+    </p>
+
+    <div class="instructions">
+      <strong>Instructions</strong><br>
+      Select one category. You may add an optional note before
+      sharing your response with Handler Paul.
+    </div>
+
+    <form id="categoryForm">
+      <h2>Select one mission category</h2>
+
+      <label class="choice">
+        <input type="radio" name="category"
+          value="Trench Coat Cover-Up" required>
+        <span>Trench Coat Cover-Up</span>
+      </label>
+
+      <label class="choice">
+        <input type="radio" name="category"
+          value="Northwoods Remembered" required>
+        <span>Northwoods Remembered</span>
+      </label>
+
+      <label class="choice">
+        <input type="radio" name="category"
+          value="Cozy Agent Comfort" required>
+        <span>Cozy Agent Comfort</span>
+      </label>
+
+      <label class="choice">
+        <input type="radio" name="category"
+          value="Hot Tub Debrief" required>
+        <span>Hot Tub Debrief</span>
+      </label>
+
+      <label class="choice">
+        <input type="radio" name="category"
+          value="Basement Safehouse" required>
+        <span>Basement Safehouse</span>
+      </label>
+
+      <label class="choice">
+        <input type="radio" name="category"
+          value="Bedroom Retreat" required>
+        <span>Bedroom Retreat</span>
+      </label>
+
+      <label class="field-label" for="agentNote">
+        Optional message to Handler
+      </label>
+
+      <textarea id="agentNote" name="agentNote"
+        placeholder="Add a note for Handler Paul, if desired..."></textarea>
+
+      <button type="button" id="shareButton">
+        Transmit Agent's Reply
+      </button>
+
+      <button type="button" class="secondary" id="previewButton">
+        Review Reply Before Sharing
+      </button>
+    </form>
+
+    <div id="status" class="status" role="status"
+      aria-live="polite"></div>
+
+    <hr class="rule">
+
+    <p class="small-print">
+      SB AGENCY · OPERATION: MIDNIGHT RENDEZVOUS<br>
+      AUTHORIZED PERSONNEL ONLY
+    </p>
+  </main>
+
+  <script>
+    const statusBox = document.getElementById("status");
+
+    function getReply() {
+      const selected = document.querySelector(
+        'input[name="category"]:checked'
+      );
+
+      if (!selected) {
+        statusBox.style.display = "block";
+        statusBox.textContent =
+          "Please select a mission category first.";
+        return null;
+      }
+
+      const note = document.getElementById("agentNote")
+        .value.trim();
+
+      let message =
+        "SB AGENCY — CONFIDENTIAL REPLY\n" +
+        "Operation: Midnight Rendezvous\n" +
+        "Communiqué 02 — Mission Category Selection\n\n" +
+        "From: Agent 18094\n" +
+        "To: Handler Paul\n\n" +
+        "Selected mission category: " +
+        selected.value + "\n";
+
+      if (note) {
+        message += "\nMessage to Handler:\n" + note + "\n";
+      }
+
+      message +=
+        "\nAgent 18094 has submitted her mission category preference.";
+
+      return message;
+    }
+
+    function showPreview(message) {
+      statusBox.style.display = "block";
+      statusBox.replaceChildren();
+
+      const heading = document.createElement("strong");
+      heading.textContent = "Agent's reply";
+      statusBox.appendChild(heading);
+
+      const preview = document.createElement("pre");
+      preview.textContent = message;
+      statusBox.appendChild(preview);
+
+      statusBox.scrollIntoView({
+        behavior: "smooth",
+        block: "nearest"
+      });
+    }
+
+    document.getElementById("previewButton")
+      .addEventListener("click", function () {
+        const message = getReply();
+        if (message) showPreview(message);
+      });
+
+    document.getElementById("shareButton")
+      .addEventListener("click", async function () {
+        const message = getReply();
+        if (!message) return;
+
+        if (navigator.share) {
+          try {
+            await navigator.share({
+              title: "SB Agency — Mission Category Selection",
+              text: message
+            });
+          } catch (error) {
+            if (error.name !== "AbortError") {
+              statusBox.style.display = "block";
+              statusBox.textContent =
+                "Sharing could not be opened. Please try again " +
+                "or use Review Reply Before Sharing.";
+            }
+          }
+        } else {
+          showPreview(message);
+
+          const notice = document.createElement("p");
+          notice.textContent =
+            "Sharing is not supported in this browser. " +
+            "Copy the reply below and paste it into your " +
+            "preferred messaging app.";
+          statusBox.appendChild(notice);
+
+          const copyButton = document.createElement("button");
+          copyButton.type = "button";
+          copyButton.textContent = "Copy Reply";
+
+          copyButton.addEventListener("click", async function () {
+            try {
+              await navigator.clipboard.writeText(message);
+              copyButton.textContent = "Reply Copied";
+            } catch (error) {
+              const textArea = document.createElement("textarea");
+              textArea.value = message;
+              statusBox.appendChild(textArea);
+              textArea.focus();
+              textArea.select();
+            }
+          });
+
+          statusBox.appendChild(copyButton);
+        }
+      });
+  </script>
+</body>
+</html>
