@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SB Agency | Operation Morning Meeting</title>
+
+<style>
+:root {
+  --green: #263c30;
+  --green-light: #405744;
+  --cream: #f2e8d0;
+  --parchment: #e5d8b8;
+  --ink: #292b24;
+  --gold: #b59a60;
+  --red: #922f29;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 24px 12px;
+  background: #30352f;
+  color: var(--ink);
+  font-family: Georgia, "Times New Roman", serif;
+}
+
+.dossier {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 26px;
+  background: var(--cream);
+  border: 4px double var(--gold);
+  box-shadow: 0 8px 30px #0007;
+}
+
+.header {
+  text-align: center;
+  background: var(--green);
+  color: var(--cream);
+  padding: 20px 12px;
+  border: 2px solid var(--gold);
+}
+
+.agency {
+  font-size: 27px;
+  font-weight: bold;
+  letter-spacing: 5px;
+  margin: 0;
+}
+
+.subtitle {
+  font-family: Arial, sans-serif;
+  font-size: 10px;
+  letter-spacing: 3px;
+  margin-top: 6px;
+}
+
+.classification {
+  display: inline-block;
+  margin: 14px 0 8px;
+  padding: 5px 14px;
+  border: 1px solid var(--gold);
+  color: var(--cream);
+  font: bold 11px Arial, sans-serif;
+  letter-spacing: 2px;
+}
+
+.header h1 {
+  margin: 8px 0;
+  font-size: 29px;
+  text-transform: uppercase;
+}
+
+.header p {
+  margin: 0;
+  font-size: 13px;
+  letter-spacing: 2px;
+}
+
+.stamp {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin: 15px 0;
+  align-items: center;
+  font: bold 10px Arial, sans-serif;
+  letter-spacing: 1px;
+}
+
+.stamp span:last-child {
+  color: var(--red);
+  border: 2px solid var(--red);
+  padding: 5px 8px;
+  transform: rotate(-3deg);
+}
+
+h2 {
+  font-size: 15px;
+  color: var(--green);
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  border-bottom: 2px solid var(--gold);
+  padding-bottom: 5px;
+  margin: 17px 0 9px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.field {
+  padding: 9px 11px;
+  background: #dcd0b1;
+  border-left: 3px solid var(--green);
+}
+
+.label {
+  display: block;
+  font: bold 10px Arial, sans-serif;
+  letter-spacing: 1px;
+  color: var(--green-light);
+  margin-bottom: 5px;
+}
+
+.value {
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+p, li {
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+ol {
+  padding-left: 22px;
+  margin: 8px 0;
+}
+
+li {
+  padding-left: 3px;
+  margin-bottom: 5px;
+}
+
+.rules {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5px 16px;
+}
+
+.rules p {
+  margin: 3px 0;
+}
+
+.success {
+  margin-top: 14px;
+  padding: 12px 15px;
+  background: #d6c9a8;
+  border: 1px solid var(--gold);
+}
+
+.success h2 {
+  margin-top: 0;
+}
+
+.motto {
+  text-align: center;
+  font-style: italic;
+  color: var(--green);
+  font-size: 14px;
+  margin: 12px 0;
+}
+
+.signatures {
+  display: flex;
+  justify-content: space-between;
+  gap: 25px;
+  margin-top: 20px;
+}
+
+.signature {
+  width: 50%;
+  border-top: 1px solid var(--ink);
+  padding-top: 6px;
+  font-size: 12px;
+}
+
+.footer {
+  text-align: center;
+  color: var(--green);
+  font: bold 9px Arial, sans-serif;
+  letter-spacing: 1.5px;
+  border-top: 1px solid var(--gold);
+  padding-top: 10px;
+  margin-top: 18px;
+}
+
+.print-button {
+  display: block;
+  max-width: 800px;
+  margin: 16px auto 0;
+  padding: 12px 22px;
+  border: 1px solid var(--gold);
+  background: var(--green);
+  color: white;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+@media (max-width: 520px) {
+  .dossier {
+    padding: 15px;
+  }
+
+  .grid, .rules {
+    grid-template-columns: 1fr;
+  }
+
+  .header h1 {
+    font-size: 23px;
+  }
+
+  .agency {
+    font-size: 22px;
+  }
+
+  .stamp {
+    font-size: 9px;
+  }
+}
+
+@media print {
+  @page {
+    size: letter portrait;
+    margin: 0.35in;
+  }
+
+  body {
+    padding: 0;
+    background: white;
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+
+  .dossier {
+    max-width: none;
+    padding: 16px;
+    border: 3px double var(--gold);
+    box-shadow: none;
+  }
+
+  .print-button {
+    display: none;
+  }
+
+  h2 {
+    margin-top: 12px;
+  }
+
+  p, li {
+    font-size: 11px;
+    line-height: 1.35;
+  }
+
+  .field {
+    padding: 7px 9px;
+  }
+
+  .header {
+    padding: 14px 10px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<main class="dossier">
+
+  <header class="header">
+    <div class="agency">SB AGENCY</div>
+    <div class="subtitle">SPECIAL OPERATIONS DIVISION</div>
+    <div class="classification">CONFIDENTIAL — EYES ONLY</div>
+    <h1>Morning Meeting</h1>
+    <p>OPERATION: MORNING MEETING</p>
+  </header>
+
+  <div class="stamp">
+    <span>MISSION FILE: SB-0700-MM</span>
+    <span>PERSONAL &amp; PRIVATE</span>
+  </div>
+
+  <h2>01 / Mission Parameters</h2>
+
+  <div class="grid">
+    <div class="field">
+      <span class="label">HANDLER</span>
+      <div class="value"><strong>Paul</strong></div>
+    </div>
+
+    <div class="field">
+      <span class="label">FIELD AGENT</span>
+      <div class="value"><strong>Agent 18094 — Sandy</strong></div>
+    </div>
+
+    <div class="field">
+      <span class="label">TIME ON TARGET</span>
+      <div class="value"><strong>0700 HOURS / 7:00 AM</strong></div>
+    </div>
+
+    <div class="field">
+      <span class="label">RENDEZVOUS LOCATION</span>
+      <div class="value"><strong>The Hot Tub</strong></div>
+    </div>
+
+    <div class="field">
+      <span class="label">DEPLOYMENT WINDOW</span>
+      <div class="value">A child-free morning with uninterrupted time together.</div>
+    </div>
+
+    <div class="field">
+      <span class="label">ATTIRE REQUIREMENT</span>
+      <div class="value"><strong>N/A — ROBE ONLY</strong><br>
+      Robes for the approach to the rendezvous.</div>
+    </div>
+  </div>
+
+  <h2>02 / Primary Mission Objectives</h2>
+
+  <ol>
+    <li>
+      <strong>Establish Secure Communications.</strong>
+      Begin with a warm greeting, a kiss, and a deliberate transition
+      from everyday responsibilities to private time.
+    </li>
+    <li>
+      <strong>Exchange Morning Intelligence.</strong>
+      Discuss the day's plans, priorities, and any coordination
+      required between Handler and Agent.
+    </li>
+    <li>
+      <strong>Strengthen Agency Bonds.</strong>
+      Each agent shares one thing they appreciate about the other
+      and one reason they are glad to be together.
+    </li>
+    <li>
+      <strong>Conduct Relaxation Operations.</strong>
+      Enjoy the hot tub together. Phones and routine distractions
+      are to remain outside the operational zone.
+    </li>
+    <li>
+      <strong>Set the Day's Mission Tone.</strong>
+      Each agent identifies one small act of kindness or affection
+      to carry into the day ahead.
+    </li>
+  </ol>
+
+  <h2>03 / Rules of Engagement</h2>
+
+  <div class="rules">
+    <p>✓ Participation is voluntary and mutually agreed upon.</p>
+    <p>✓ Phones remain silent and out of reach.</p>
+    <p>✓ Respect each agent's comfort and boundaries.</p>
+    <p>✓ Hydration and safe hot tub temperatures are mandatory.</p>
+  </div>
+
+  <section class="success">
+    <h2>04 / Mission Success Criteria</h2>
+    <p>
+      Mission success is achieved when both agents leave the
+      rendezvous feeling appreciated, connected, relaxed, and ready
+      to face the day together.
+    </p>
+    <div class="motto">
+      “Our missions bring us closer in intimacy.”
+    </div>
+  </section>
+
+  <div class="signatures">
+    <div class="signature">
+      <strong>Handler Paul</strong><br>
+      Mission Authorization
+    </div>
+    <div class="signature">
+      <strong>Agent 18094 — Sandy</strong><br>
+      Field Agent Acknowledgment
+    </div>
+  </div>
+
+  <footer class="footer">
+    SB AGENCY • PRIVATE OPERATIONS DIVISION<br>
+    COMPLETE THE MISSION. STRENGTHEN THE BOND. END TRANSMISSION.
+  </footer>
+
+</main>
+
+<button class="print-button" onclick="window.print()">
+  Print Mission Briefing
+</button>
+
+</body>
+</html>
