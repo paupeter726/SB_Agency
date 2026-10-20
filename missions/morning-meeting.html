@@ -9,7 +9,45 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>SB Agency | Operation Morning Splash</title>
+.receipt {
+  margin-top: 18px;
+  padding: 16px;
+  text-align: center;
+  background: #211d20;
+  border: 1px solid #793238;
+}
 
+.receipt h2 {
+  border-bottom: 0;
+}
+
+.receipt p {
+  color: #c9bfb4;
+}
+
+.confirm {
+  display: block;
+  width: 100%;
+  max-width: 420px;
+  margin: 12px auto;
+  padding: 14px;
+  background: #a52a32;
+  color: white;
+  border: 1px solid #c43b43;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.confirm:hover {
+  background: #c43b43;
+}
+
+#receiptStatus {
+  margin-top: 10px;
+  color: #f3b5b8;
+  font-size: 12px;
+  overflow-wrap: anywhere;
+}
 <style>
   :root {
   --green: #171719;
@@ -377,6 +415,24 @@ li {
     <p>
       Sexy Fun!
     </p>
+<section class="receipt">
+  <h2>05 / Agent Receipt Confirmation</h2>
+
+  <p>
+    Agent 18094: confirm receipt of this mission briefing
+    and select an app to notify Handler Paul.
+  </p>
+
+  <button
+    id="confirmButton"
+    class="confirm"
+    type="button"
+  >
+    CONFIRM RECEIPT &amp; NOTIFY HANDLER
+  </button>
+
+  <div id="receiptStatus" role="status" aria-live="polite"></div>
+</section>
     <div class="motto">
       “Our missions & your boobs, bring us closer in intimacy.”
     </div>
@@ -403,6 +459,41 @@ li {
 <button class="print-button" onclick="window.print()">
   Print Mission Briefing
 </button>
+<script>
+document.getElementById("confirmButton").addEventListener("click", async function () {
+  const status = document.getElementById("receiptStatus");
 
+  const message =
+    "SB AGENCY — MISSION RECEIPT CONFIRMED\n" +
+    "Agent 18094 (Sandy) confirms receipt of Operation: Morning Meeting.\n" +
+    "Acknowledged: " + new Date().toLocaleString() + "\n" +
+    "Mission: " + window.location.href;
+
+  if (navigator.share) {
+    try {
+      await navigator.share({
+        title: "SB Agency — Mission Receipt",
+        text: message
+      });
+
+      status.textContent =
+        "Share menu opened. Send the message to Handler Paul to complete notification.";
+    } catch (error) {
+      status.textContent =
+        error.name === "AbortError"
+          ? "Sharing cancelled. No receipt was sent."
+          : "Unable to open sharing. Please try again.";
+    }
+  } else {
+    try {
+      await navigator.clipboard.writeText(message);
+      status.textContent =
+        "Acknowledgment copied. Paste it into a messaging app and send it to Handler Paul.";
+    } catch (error) {
+      status.textContent = message;
+    }
+  }
+});
+</script>
 </body>
 </html>
