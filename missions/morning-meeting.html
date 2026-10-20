@@ -1,499 +1,422 @@
+
 <!DOCTYPE html>
 <html lang="en">
-<header class= header>
-<img
-  src="../assets/images/SB-Logo.png"
-  alt="SB Agency Logo"
-  style="width:140px; max-height:120px; object-fit:contain; margin-bottom:12px;"
->
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SB Agency | Operation Morning Splash</title>
-.receipt {
-  margin-top: 18px;
-  padding: 16px;
-  text-align: center;
-  background: #211d20;
-  border: 1px solid #793238;
-}
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#171719">
+  <title>SB Agency | Operation Morning Splash</title>
+  <style>
+    :root {
+      --black: #171719;
+      --panel: #242225;
+      --cream: #f4ead8;
+      --muted: #c9bfb4;
+      --red: #a52a32;
+      --red-bright: #c43b43;
+      --line: #793238;
+    }
 
-.receipt h2 {
-  border-bottom: 0;
-}
+    * { box-sizing: border-box; }
 
-.receipt p {
-  color: #c9bfb4;
-}
+    body {
+      margin: 0;
+      padding: 24px 12px;
+      background: radial-gradient(ellipse at top, #3a2024 0, var(--black) 58%);
+      color: var(--cream);
+      font-family: Georgia, "Times New Roman", serif;
+    }
 
-.confirm {
-  display: block;
-  width: 100%;
-  max-width: 420px;
-  margin: 12px auto;
-  padding: 14px;
-  background: #a52a32;
-  color: black;
-  border: 1px solid #c43b43;
-  font-weight: bold;
-  cursor: pointer;
-}
+    .dossier {
+      max-width: 800px;
+      margin: 0 auto;
+      background: var(--black);
+      border: 1px solid var(--red);
+      box-shadow: 0 8px 30px #0007;
+      overflow: hidden;
+    }
 
-.confirm:hover {
-  background: #c43b43;
-}
+    .dossier::before {
+      content: "";
+      display: block;
+      height: 7px;
+      background: linear-gradient(90deg, #47171b, var(--red-bright), #47171b);
+    }
 
-#receiptStatus {
-  margin-top: 10px;
-  color: #f3b5b8;
-  font-size: 12px;
-  overflow-wrap: anywhere;
-}
-<style>
-  :root {
-  --green: #171719;
-  --green-light: #333035;
-  --cream: #f4ead8;
-  --parchment: #242225;
-  --ink: #f4ead8;
-  --gold: #a52a32;
-  --red: #c43b43;
-}
+    .header {
+      text-align: center;
+      background: linear-gradient(145deg, #292629, #171719 75%);
+      padding: 22px 14px;
+      border-bottom: 1px solid var(--line);
+    }
 
-* {
-  box-sizing: border-box;
-}
+    .logo {
+      display: block;
+      width: 140px;
+      max-width: 60%;
+      max-height: 120px;
+      object-fit: contain;
+      margin: 0 auto 12px;
+    }
 
-body {
-  margin: 0;
-  padding: 24px 12px;
-  background: #171719;
-  color: var(--ink);
-  font-family: Georgia, "Times New Roman", serif;
-}
+    .agency {
+      font: bold 27px Arial, sans-serif;
+      letter-spacing: 5px;
+      margin: 0;
+    }
 
-.dossier {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 26px;
-  background: var(--cream);
-  border: 4px double var(--gold);
-  box-shadow: 0 8px 30px #0007;
-}
+    .subtitle {
+      font: 10px Arial, sans-serif;
+      letter-spacing: 3px;
+      color: var(--muted);
+      margin-top: 6px;
+    }
 
-.header
-{
-  text-align: center;
-  background: #211d20;
-  color: var(--cream);
-  padding: 20px 12px;
-  border: 2px solid var(--gold);
-}
+    .classification {
+      display: inline-block;
+      margin: 14px 0 8px;
+      padding: 5px 14px;
+      border: 1px solid var(--red-bright);
+      color: #ffb4b4;
+      font: bold 11px Arial, sans-serif;
+      letter-spacing: 2px;
+    }
 
-.agency {
-  font-size: 27px;
-  font-weight: bold;
-  letter-spacing: 5px;
-  margin: 0;
-}
+    .header h1 {
+      margin: 8px 0;
+      font-size: 29px;
+      text-transform: uppercase;
+    }
 
-.subtitle {
-  font-family: Arial, sans-serif;
-  font-size: 10px;
-  letter-spacing: 3px;
-  margin-top: 6px;
-}
+    .header p {
+      margin: 0;
+      font-size: 12px;
+      letter-spacing: 2px;
+      color: #e6a4a5;
+    }
 
-.classification {
-  display: inline-block;
-  margin: 14px 0 8px;
-  padding: 5px 14px;
-  border: 1px solid var(--gold);
-  color: var(--cream);
-  font: bold 11px Arial, sans-serif;
-  letter-spacing: 2px;
-}
+    .inner { padding: 22px 26px; }
 
-.header h1 {
-  margin: 8px 0;
-  font-size: 29px;
-  text-transform: uppercase;
-}
+    .stamp {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 0 0 16px;
+      color: var(--muted);
+      font: bold 10px Arial, sans-serif;
+      letter-spacing: 1px;
+    }
 
-.header p {
-  margin: 0;
-  font-size: 13px;
-  letter-spacing: 2px;
-}
+    .stamp span:last-child {
+      color: #ff9a9f;
+      border: 1px solid var(--red-bright);
+      padding: 5px 8px;
+      transform: rotate(-2deg);
+    }
 
-.stamp {
-  display: flex;
-  justify-content: space-between;
-  gap: 10px;
-  margin: 15px 0;
-  align-items: center;
-  font: bold 10px Arial, sans-serif;
-  letter-spacing: 1px;
-}
+    h2 {
+      font: bold 14px Arial, sans-serif;
+      color: #f18b91;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 7px;
+      margin: 19px 0 10px;
+    }
 
-.stamp span:last-child {
-  color: var(--red);
-  border: 2px solid var(--red);
-  padding: 5px 8px;
-  transform: rotate(-3deg);
-}
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
 
-h2 {
-  font-size: 15px;
-  color: var(--green);
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  border-bottom: 2px solid var(--gold);
-  padding-bottom: 5px;
-  margin: 17px 0 9px;
-}
+    .field {
+      padding: 10px 12px;
+      background: var(--panel);
+      border-left: 3px solid var(--red);
+      min-width: 0;
+    }
 
-.grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 10px;
-}
+    .label {
+      display: block;
+      font: bold 10px Arial, sans-serif;
+      letter-spacing: 1px;
+      color: #d68b8e;
+      margin-bottom: 5px;
+    }
 
-.field {
-  padding: 9px 11px;
-  background: #dcd0b1;
-  border-left: 3px solid var(--green);
-}
+    .value {
+      font-size: 13px;
+      line-height: 1.45;
+      overflow-wrap: anywhere;
+    }
 
-.label {
-  display: block;
-  font: bold 10px Arial, sans-serif;
-  letter-spacing: 1px;
-  color: var(--green-light);
-  margin-bottom: 5px;
-}
+    p, li { font-size: 13px; line-height: 1.5; }
+    ol { padding-left: 22px; margin: 8px 0; }
+    li { padding-left: 3px; margin-bottom: 7px; }
 
-.value {
-  font-size: 14px;
-  line-height: 1.4;
-}
+    .rules {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5px 16px;
+    }
 
-p, li {
-  font-size: 13px;
-  line-height: 1.5;
-}
+    .rules p { margin: 3px 0; color: var(--muted); }
 
-ol {
-  padding-left: 22px;
-  margin: 8px 0;
-}
+    .success {
+      margin-top: 16px;
+      padding: 12px 15px;
+      background: linear-gradient(120deg, #301c20, #242124);
+      border: 1px solid var(--line);
+      border-top: 3px solid var(--red);
+    }
 
-li {
-  padding-left: 3px;
-  margin-bottom: 5px;
-}
+    .success h2 { margin-top: 0; }
 
-.rules {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 5px 16px;
-}
+    .motto {
+      text-align: center;
+      font-style: italic;
+      color: var(--cream);
+      font-size: 14px;
+      margin: 12px 0 2px;
+    }
 
-.rules p {
-  margin: 3px 0;
-}
+    .receipt {
+      margin-top: 18px;
+      padding: 16px;
+      text-align: center;
+      background: #211d20;
+      border: 1px solid var(--line);
+    }
 
-.success {
-  margin-top: 14px;
-  padding: 12px 15px;
-  background: #d6c9a8;
-  border: 1px solid var(--gold);
-}
+    .receipt h2 { border-bottom: 0; margin-top: 0; }
+    .receipt p { color: var(--muted); }
 
-.success h2 {
-  margin-top: 0;
-}
+    .confirm {
+      display: block;
+      width: 100%;
+      max-width: 420px;
+      margin: 12px auto;
+      padding: 14px;
+      background: var(--red);
+      color: white;
+      border: 1px solid var(--red-bright);
+      font: bold 12px Arial, sans-serif;
+      letter-spacing: .5px;
+      cursor: pointer;
+    }
 
-.motto {
-  text-align: center;
-  font-style: italic;
-  color: var(--green);
-  font-size: 14px;
-  margin: 12px 0;
-}
+    .confirm:hover { background: var(--red-bright); }
+    .confirm:focus-visible {
+      outline: 3px solid var(--cream);
+      outline-offset: 3px;
+    }
 
-.signatures {
-  display: flex;
-  justify-content: space-between;
-  gap: 25px;
-  margin-top: 20px;
-}
+    #receiptStatus {
+      margin-top: 10px;
+      color: #f3b5b8;
+      font: 12px/1.5 Arial, sans-serif;
+      overflow-wrap: anywhere;
+    }
 
-.signature {
-  width: 50%;
-  border-top: 1px solid var(--ink);
-  padding-top: 6px;
-  font-size: 12px;
-}
+    .signatures {
+      display: flex;
+      justify-content: space-between;
+      gap: 25px;
+      margin-top: 22px;
+    }
 
-.footer {
-  text-align: center;
-  color: var(--green);
-  font: bold 9px Arial, sans-serif;
-  letter-spacing: 1.5px;
-  border-top: 1px solid var(--gold);
-  padding-top: 10px;
-  margin-top: 18px;
-}
+    .signature {
+      width: 50%;
+      border-top: 1px solid #786b62;
+      padding-top: 6px;
+      font-size: 12px;
+      color: var(--muted);
+    }
 
-.print-button {
-  display: block;
-  max-width: 800px;
-  margin: 16px auto 0;
-  padding: 12px 22px;
-  border: 1px solid var(--gold);
-  background: var(--green);
-  color: white;
-  font-size: 14px;
-  cursor: pointer;
-}
+    .footer {
+      text-align: center;
+      color: #b6a5a0;
+      font: bold 9px/1.7 Arial, sans-serif;
+      letter-spacing: 1.5px;
+      border-top: 1px solid #4b2a2d;
+      padding-top: 10px;
+      margin-top: 18px;
+    }
 
-@media (max-width: 520px) {
-  .dossier {
-    padding: 15px;
-  }
+    .print-button {
+      display: block;
+      max-width: 800px;
+      margin: 16px auto 0;
+      padding: 12px 22px;
+      border: 1px solid var(--red);
+      background: var(--panel);
+      color: var(--cream);
+      font-size: 14px;
+      cursor: pointer;
+    }
 
-  .grid, .rules {
-    grid-template-columns: 1fr;
-  }
+    @media (max-width: 520px) {
+      body { padding: 10px 7px; }
+      .inner { padding: 15px; }
+      .grid, .rules { grid-template-columns: 1fr; }
+      .header h1 { font-size: 23px; }
+      .agency { font-size: 22px; letter-spacing: 3px; }
+      .stamp { font-size: 9px; }
+      .signatures { gap: 15px; }
+    }
 
-  .header h1 {
-    font-size: 23px;
-  }
-
-  .agency {
-    font-size: 22px;
-  }
-
-  .stamp {
-    font-size: 9px;
-  }
-}
-
-@media print {
-  @page {
-    size: letter portrait;
-    margin: 0.35in;
-  }
-
-  body {
-    padding: 0;
-    background: white;
-    print-color-adjust: exact;
-    -webkit-print-color-adjust: exact;
-  }
-
-  .dossier {
-    max-width: none;
-    padding: 16px;
-    border: 3px double var(--gold);
-    box-shadow: none;
-  }
-
-  .print-button {
-    display: none;
-  }
-
-  h2 {
-    margin-top: 12px;
-  }
-
-  p, li {
-    font-size: 11px;
-    line-height: 1.35;
-  }
-
-  .field {
-    padding: 7px 9px;
-  }
-
-  .header {
-    padding: 14px 10px;
-  }
-}
-</style>
+    @media print {
+      @page { size: letter portrait; margin: .35in; }
+      body {
+        padding: 0;
+        background: white;
+        print-color-adjust: exact;
+        -webkit-print-color-adjust: exact;
+      }
+      .dossier { max-width: none; box-shadow: none; }
+      .print-button { display: none; }
+      .inner { padding: 14px 18px; }
+      .header { padding: 14px 10px; }
+      .logo { width: 90px; max-height: 75px; }
+      h2 { margin-top: 12px; }
+      p, li { font-size: 10.5px; line-height: 1.3; }
+      li { margin-bottom: 4px; }
+      .field { padding: 7px 9px; }
+      .receipt { break-inside: avoid; }
+    }
+  </style>
 </head>
 
 <body>
+  <main class="dossier">
+    <header class="header">
+      <img
+        class="logo"
+        src="../assets/images/SB-Logo.png"
+        alt="SB Agency Logo"
+        onerror="this.style.display='none'"
+      >
+      <div class="agency">SB AGENCY</div>
+      <div class="subtitle">SPECIAL OPERATIONS DIVISION</div>
+      <div class="classification">CONFIDENTIAL — EYES ONLY</div>
+      <h1>Morning Splash</h1>
+      <p>OPERATION: MORNING DIP</p>
+    </header>
 
-<main class="dossier">
+    <div class="inner">
+      <div class="stamp">
+        <span>MISSION FILE: SB-0715-MS</span>
+        <span>PERSONAL &amp; PRIVATE</span>
+      </div>
 
-  <header class="header">
-    <div class="agency">SB AGENCY</div>
-    <div class="subtitle">SPECIAL OPERATIONS DIVISION</div>
-    <div class="classification">CONFIDENTIAL — EYES ONLY</div>
-    <h1>Morning Splash</h1>
-    <p>OPERATION: Morning Dip</p>
-  </header>
+      <h2>01 / Mission Parameters</h2>
+      <div class="grid">
+        <div class="field">
+          <span class="label">HANDLER</span>
+          <div class="value"><strong>Paul — Admirer of Sandy's assets</strong></div>
+        </div>
+        <div class="field">
+          <span class="label">FIELD AGENT</span>
+          <div class="value"><strong>Agent 18094 — Sandy</strong></div>
+        </div>
+        <div class="field">
+          <span class="label">TIME ON TARGET</span>
+          <div class="value"><strong>0715 HOURS / 7:15 AM</strong></div>
+        </div>
+        <div class="field">
+          <span class="label">RENDEZVOUS LOCATION</span>
+          <div class="value"><strong>The Hot Tub</strong></div>
+        </div>
+        <div class="field">
+          <span class="label">DEPLOYMENT WINDOW</span>
+          <div class="value">7:15–7:45 AM</div>
+        </div>
+        <div class="field">
+          <span class="label">ATTIRE REQUIREMENT</span>
+          <div class="value"><strong>Robe for the approach; private hot-tub attire by mutual agreement.</strong></div>
+        </div>
+      </div>
 
-  <div class="stamp">
-    <span>MISSION FILE: SB-0700-MM</span>
-    <span>PERSONAL &amp; PRIVATE</span>
-  </div>
+      <h2>02 / Primary Mission Objectives</h2>
+      <ol>
+        <li><strong>Establish Readiness for Mission.</strong> Sandy meets Paul in the kitchen upon his return from school.</li>
+        <li><strong>Ready Coffee.</strong> Handler and Agent prepare their preferred coffee.</li>
+        <li><strong>Mobilize to Hot Tub.</strong> Paul and Sandy head to the hot tub in robes, with coffee in hand.</li>
+        <li><strong>Prepare for the Soak.</strong> Set robes aside and enter the hot tub when ready.</li>
+        <li><strong>Conduct Interactive Operations.</strong> Enjoy private time together, guided by mutual comfort, affection, and consent.</li>
+      </ol>
 
-  <h2>01 / Mission Parameters</h2>
+      <h2>03 / Rules of Engagement</h2>
+      <div class="rules">
+        <p>✓ Both agents participate willingly.</p>
+        <p>✓ Affection and playful flirting welcome.</p>
+        <p>✓ Respect each agent's comfort and boundaries.</p>
+        <p>✓ Hydration and safe hot-tub temperature are mission priorities.</p>
+      </div>
 
-  <div class="grid">
-    <div class="field">
-      <span class="label">HANDLER</span>
-      <div class="value"><strong>Paul - Admirer of Sandy's large assets</strong></div>
+      <section class="success">
+        <h2>04 / Mission Success Criteria</h2>
+        <p>A successful mission means shared enjoyment, laughter, affection, and feeling closer at the end of the rendezvous.</p>
+        <div class="motto">“Our missions bring us closer in intimacy.”</div>
+      </section>
+
+      <section class="receipt" aria-labelledby="receiptTitle">
+        <h2 id="receiptTitle">05 / Agent Receipt Confirmation</h2>
+        <p>Agent 18094: confirm receipt of this mission briefing. The share menu will let you choose an app to send the acknowledgment to Handler Paul.</p>
+        <button id="confirmButton" class="confirm" type="button">
+          CONFIRM RECEIPT &amp; NOTIFY HANDLER
+        </button>
+        <div id="receiptStatus" role="status" aria-live="polite"></div>
+      </section>
+
+      <div class="signatures">
+        <div class="signature"><strong>Handler Paul</strong><br>Mission Authorization</div>
+        <div class="signature"><strong>Agent 18094 — Sandy</strong><br>Field Agent Acknowledgment</div>
+      </div>
+
+      <footer class="footer">
+        SB AGENCY • PRIVATE OPERATIONS DIVISION<br>
+        COMPLETE THE MISSION. STRENGTHEN THE BOND. END TRANSMISSION.
+      </footer>
     </div>
+  </main>
 
-    <div class="field">
-      <span class="label">FIELD AGENT</span>
-      <div class="value"><strong>Agent 18094 — Sandy with worlds most perfect Assets. </strong></div>
-    </div>
+  <button class="print-button" type="button" onclick="window.print()">Print Mission Briefing</button>
 
-    <div class="field">
-      <span class="label">TIME ON TARGET</span>
-      <div class="value"><strong>0715 HOURS / 7:15 AM</strong></div>
-    </div>
+  <script>
+    document.getElementById("confirmButton").addEventListener("click", async function () {
+      const status = document.getElementById("receiptStatus");
+      const message =
+        "SB AGENCY — MISSION RECEIPT CONFIRMED\n" +
+        "Agent 18094 (Sandy) confirms receipt of Operation: Morning Splash.\n" +
+        "Acknowledged: " + new Date().toLocaleString() + "\n" +
+        "Mission: " + window.location.href;
 
-    <div class="field">
-      <span class="label">RENDEZVOUS LOCATION</span>
-      <div class="value"><strong>The Hot Tub</strong></div>
-    </div>
-
-    <div class="field">
-      <span class="label">DEPLOYMENT WINDOW</span>
-      <div class="value">7:15-7:45AM</div>
-    </div>
-
-    <div class="field">
-      <span class="label">ATTIRE REQUIREMENT</span>
-      <div class="value"><strong>NAKED — ROBE ONLY</strong><br>
-      Robes for the approach to the rendezvous.</div>
-    </div>
-  </div>
-
-  <h2>02 / Primary Mission Objectives</h2>
-
-  <ol>
-    <li>
-      <strong>Establish Readiness for Mission.</strong>
-      Sandy meets Paul in the Kitchen upon his return from school.
-    </li>
-    <li>
-      <strong>Ready Coffee.</strong>
-      Handler & Agent secure desired coffee.
-    </li>
-    <li>
-      <strong>Mobilize to Hot Tub.</strong>
-      Paul & Sandy move to hot tub wearing robes and coffees in hand.
-    </li>
-<li>
-      <strong>Drop Robes.</strong>
-      Paul & Sandy remove robes and enter hot tub.
-    </li>
-    <li>
-      <strong>Conduct Interactive Operations.</strong>
-      Enjoy the hot tub together. Sans clothes. Interacting as each pleases the other.
-    </li>
-  </ol>
-
-  <h2>03 / Rules of Engagement</h2>
-
-  <div class="rules">
-    <p>✓ Naked.</p>
-    <p>✓ Boobs on display.</p>
-    <p>✓ Bare butts.</p>
- <p>✓ Bare special parts.</p>
-    <p>✓ Inter...of course.</p>
-  </div>
-
-  <section class="success">
-    <h2>04 / Mission Success Criteria</h2>
-    <p>
-      Sexy Fun!
-    </p>
-<section class="receipt">
-  <h2>05 / Agent Receipt Confirmation</h2>
-
-  <p>
-    Agent 18094: confirm receipt of this mission briefing
-    and select an app to notify Handler Paul.
-  </p>
-
-  <button
-    id="confirmButton"
-    class="confirm"
-    type="button"
-  >
-    CONFIRM RECEIPT &amp; NOTIFY HANDLER
-  </button>
-
-  <div id="receiptStatus" role="status" aria-live="polite"></div>
-</section>
-    <div class="motto">
-      “Our missions & your boobs, bring us closer in intimacy.”
-    </div>
-  </section>
-
-  <div class="signatures">
-    <div class="signature">
-      <strong>Handler Paul</strong><br>
-      Mission Authorization
-    </div>
-    <div class="signature">
-      <strong>Agent 18094 — Sandy</strong><br>
-      Field Agent Acknowledgment
-    </div>
-  </div>
-
-  <footer class="footer">
-    SB AGENCY • PRIVATE OPERATIONS DIVISION<br>
-    COMPLETE THE MISSION. STRENGTHEN THE BOND. END TRANSMISSION.
-  </footer>
-
-</main>
-
-<button class="print-button" onclick="window.print()">
-  Print Mission Briefing
-</button>
-<script>
-document.getElementById("confirmButton").addEventListener("click", async function () {
-  const status = document.getElementById("receiptStatus");
-
-  const message =
-    "SB AGENCY — MISSION RECEIPT CONFIRMED\n" +
-    "Agent 18094 (Sandy) confirms receipt of Operation: Morning Meeting.\n" +
-    "Acknowledged: " + new Date().toLocaleString() + "\n" +
-    "Mission: " + window.location.href;
-
-  if (navigator.share) {
-    try {
-      await navigator.share({
-        title: "SB Agency — Mission Receipt",
-        text: message
-      });
-
-      status.textContent =
-        "Share menu opened. Send the message to Handler Paul to complete notification.";
-    } catch (error) {
-      status.textContent =
-        error.name === "AbortError"
-          ? "Sharing cancelled. No receipt was sent."
-          : "Unable to open sharing. Please try again.";
-    }
-  } else {
-    try {
-      await navigator.clipboard.writeText(message);
-      status.textContent =
-        "Acknowledgment copied. Paste it into a messaging app and send it to Handler Paul.";
-    } catch (error) {
-      status.textContent = message;
-    }
-  }
-});
-</script>
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: "SB Agency — Mission Receipt",
+            text: message,
+            url: window.location.href
+          });
+          status.textContent = "Share menu opened. The receipt is sent only after you select an app and send the message.";
+        } catch (error) {
+          status.textContent = error.name === "AbortError"
+            ? "Sharing cancelled. No receipt was sent."
+            : "Unable to open the share menu. Please try again.";
+        }
+      } else {
+        try {
+          await navigator.clipboard.writeText(message);
+          status.textContent = "Acknowledgment copied. Paste it into a messaging app and send it to Handler Paul.";
+        } catch (error) {
+          status.textContent = message;
+        }
+      }
+    });
+  </script>
 </body>
 </html>
