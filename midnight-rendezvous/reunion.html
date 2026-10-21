@@ -298,20 +298,142 @@ h1 span { color: var(--red); }
 
   <!-- Airplane outline: editable SVG illustration -->
   <section class="artwork" aria-label="Airplane and airport">
-    <svg class="jet" viewBox="0 0 220 150"
-         fill="none" stroke="currentColor"
-         stroke-width="3" stroke-linecap="round"
-         stroke-linejoin="round" role="img"
-         aria-label="Airplane outline">
-      <path d="M18 79 L90 68 L126 20 Q131 14 137 18
-               L142 22 L125 65 L182 57 Q194 56 199 64
-               L202 69 L131 88 L113 122 L101 126
-               L104 95 L48 104 L34 119 L25 119
-               L31 98 L18 91 Z"/>
-      <path d="M90 68 L104 95"/>
-      <path d="M126 65 L131 88"/>
-      <path d="M31 98 L18 91"/>
-    </svg>
+    
+<!-- Detailed private jet outline -->
+<svg class="plane"
+     viewBox="0 0 640 300"
+     xmlns="http://www.w3.org/2000/svg"
+     role="img"
+     aria-label="Detailed private jet airplane outline"
+     fill="none"
+     stroke="#10243F"
+     stroke-width="3.5"
+     stroke-linecap="round"
+     stroke-linejoin="round">
+
+  <!-- Main fuselage, nose to tail -->
+  <path d="
+    M 48 143
+    Q 65 132 91 130
+    L 474 130
+    Q 503 130 525 139
+    L 571 155
+    Q 589 161 583 169
+    Q 578 175 557 175
+    L 493 175
+    Q 472 175 450 174
+    L 104 174
+    Q 71 173 48 157
+    Q 40 150 48 143 Z"/>
+
+  <!-- Cockpit windshield -->
+  <path d="M 58 143 Q 75 137 94 137 L 111 138
+           L 111 151 L 69 151 Z"/>
+
+  <!-- Passenger windows -->
+  <g stroke-width="2.5">
+    <path d="M 130 140 L 143 140 L 143 147 L 130 147 Z"/>
+    <path d="M 153 140 L 166 140 L 166 147 L 153 147 Z"/>
+    <path d="M 176 140 L 189 140 L 189 147 L 176 147 Z"/>
+    <path d="M 199 140 L 212 140 L 212 147 L 199 147 Z"/>
+    <path d="M 222 140 L 235 140 L 235 147 L 222 147 Z"/>
+    <path d="M 245 140 L 258 140 L 258 147 L 245 147 Z"/>
+    <path d="M 268 140 L 281 140 L 281 147 L 268 147 Z"/>
+    <path d="M 291 140 L 304 140 L 304 147 L 291 147 Z"/>
+    <path d="M 314 140 L 327 140 L 327 147 L 314 147 Z"/>
+    <path d="M 337 140 L 350 140 L 350 147 L 337 147 Z"/>
+    <path d="M 360 140 L 373 140 L 373 147 L 360 147 Z"/>
+    <path d="M 383 140 L 396 140 L 396 147 L 383 147 Z"/>
+    <path d="M 406 140 L 419 140 L 419 147 L 406 147 Z"/>
+  </g>
+
+  <!-- Near-side swept wing -->
+  <path d="
+    M 277 169
+    L 347 216
+    L 451 235
+    Q 461 237 466 232
+    L 465 226
+    L 373 166"/>
+
+  <!-- Far-side wing -->
+  <path d="
+    M 279 135
+    L 355 88
+    L 453 69
+    Q 462 68 466 73
+    L 463 79
+    L 373 138"/>
+
+  <!-- Near-side rear horizontal stabilizer -->
+  <path d="
+    M 473 169
+    L 522 198
+    L 576 205
+    Q 583 205 586 201
+    L 582 196
+    L 521 164"/>
+
+  <!-- Far-side horizontal stabilizer -->
+  <path d="
+    M 473 137
+    L 521 108
+    L 575 101
+    Q 582 101 585 105
+    L 581 110
+    L 521 142"/>
+
+  <!-- Vertical tail fin -->
+  <path d="
+    M 485 137
+    L 511 76
+    Q 515 68 523 71
+    L 532 76
+    L 519 139"/>
+
+  <!-- Twin rear-mounted jet engines -->
+  <path d="
+    M 449 157
+    L 463 151
+    Q 477 148 489 154
+    L 495 165
+    L 487 173
+    L 464 172
+    Z"/>
+
+  <path d="
+    M 449 179
+    L 463 176
+    Q 477 175 489 181
+    L 495 190
+    L 487 198
+    L 464 193
+    Z"/>
+
+  <!-- Engine intake details -->
+  <ellipse cx="487" cy="164" rx="4" ry="7"/>
+  <ellipse cx="487" cy="185" rx="4" ry="7"/>
+
+  <!-- Wing and tail control surfaces -->
+  <path d="M 354 213 L 374 201"/>
+  <path d="M 355 91 L 375 103"/>
+  <path d="M 532 194 L 543 182"/>
+  <path d="M 532 109 L 543 121"/>
+
+  <!-- Subtle red agency accent -->
+  <path d="M 125 161 L 432 161"
+        stroke="#D93643"
+        stroke-width="2.5"/>
+
+  <!-- Flight detail -->
+  <path d="M 37 185 L 13 185"
+        stroke="#D93643"
+        stroke-width="2"/>
+  <path d="M 43 195 L 24 195"
+        stroke="#D93643"
+        stroke-width="2"/>
+</svg>
+
 
     <div class="flight-label">HOMEWARD BOUND</div>
 
@@ -383,58 +505,206 @@ h1 span { color: var(--red); }
   <!-- Black Dodge Durango outline: editable SVG illustration -->
   <div class="vehicle-label">GROUND TRANSPORT • REUNION DETAIL</div>
 
-  <svg class="durango" viewBox="0 0 520 210"
-       role="img" aria-label="Black Dodge Durango SUV"
-       xmlns="http://www.w3.org/2000/svg">
-    <g stroke="#111318" stroke-width="5"
-       stroke-linejoin="round" stroke-linecap="round">
-      <!-- Body -->
-      <path fill="#111318"
-        d="M36 139 L45 111 Q49 99 67 94
-           L112 85 L153 44 Q164 33 186 32
-           L325 32 Q348 33 366 53
-           L410 91 L455 104 Q472 110 478 129
-           L483 151 L468 163 L49 163 L34 153 Z"/>
+  
+<!-- Detailed black Dodge Durango-style SUV -->
+<svg class="durango"
+     viewBox="0 0 720 310"
+     xmlns="http://www.w3.org/2000/svg"
+     role="img"
+     aria-label="Black Dodge Durango SUV"
+     fill="none"
+     stroke="#111318"
+     stroke-width="4"
+     stroke-linecap="round"
+     stroke-linejoin="round">
 
-      <!-- Windows -->
-      <path fill="#F8F3E9"
-        d="M128 83 L166 47 Q174 40 190 40
-           L220 40 L220 83 Z"/>
-      <path fill="#F8F3E9"
-        d="M232 40 L322 40 Q339 41 351 56
-           L376 83 L232 83 Z"/>
+  <!-- Ground shadow -->
+  <path d="M55 260 Q350 278 665 260"
+        stroke="#D93643" stroke-width="2"/>
 
-      <!-- Window dividers -->
-      <path fill="none" d="M225 40 L225 84 M357 58 L366 84"/>
+  <!-- Roof rails -->
+  <path d="M170 83 L420 83 Q431 83 438 91"
+        stroke-width="5"/>
+  <path d="M183 91 L414 91"
+        stroke-width="2"/>
 
-      <!-- Front grille and lamps -->
-      <path fill="#F8F3E9" stroke-width="3"
-        d="M438 113 L463 121 L467 137 L438 137 Z"/>
-      <path fill="#D93643" stroke-width="2"
-        d="M445 115 L462 121 L464 126 L443 124 Z"/>
-      <path fill="none" stroke="#F8F3E9" stroke-width="2"
-        d="M442 129 L461 132 M442 134 L461 137"/>
+  <!-- Main SUV body silhouette -->
+  <path d="
+    M 48 220
+    L 55 183
+    Q 59 166 78 158
+    L 129 143
+    L 183 96
+    Q 196 85 219 85
+    L 416 85
+    Q 442 85 461 105
+    L 504 145
+    L 588 161
+    Q 609 165 623 184
+    L 650 207
+    L 657 237
+    L 641 248
+    L 76 248
+    L 53 239
+    Z"
+    fill="#111318"/>
 
-      <!-- Rear lamp -->
-      <path fill="#D93643" stroke-width="2"
-        d="M43 119 L61 115 L60 136 L39 137 Z"/>
+  <!-- Windshield -->
+  <path d="
+    M 143 143
+    L 193 103
+    Q 203 96 222 96
+    L 249 96
+    L 249 145
+    Z"
+    fill="#F8F3E9"/>
 
-      <!-- Side detail -->
-      <path fill="none" stroke="#F8F3E9" stroke-width="2"
-        d="M72 144 L423 144"/>
-      <path fill="none" stroke="#F8F3E9" stroke-width="2"
-        d="M116 95 L385 95"/>
+  <!-- Front side window -->
+  <path d="
+    M 261 96
+    L 331 96
+    L 331 145
+    L 261 145
+    Z"
+    fill="#F8F3E9"/>
 
-      <!-- Wheels -->
-      <circle cx="129" cy="158" r="29" fill="#111318"/>
-      <circle cx="129" cy="158" r="16" fill="#F8F3E9" stroke-width="4"/>
-      <circle cx="129" cy="158" r="6" fill="#111318" stroke="none"/>
+  <!-- Rear side window -->
+  <path d="
+    M 343 96
+    L 410 96
+    Q 429 96 444 112
+    L 474 145
+    L 343 145
+    Z"
+    fill="#F8F3E9"/>
 
-      <circle cx="405" cy="158" r="29" fill="#111318"/>
-      <circle cx="405" cy="158" r="16" fill="#F8F3E9" stroke-width="4"/>
-      <circle cx="405" cy="158" r="6" fill="#111318" stroke="none"/>
-    </g>
-  </svg>
+  <!-- Window pillars -->
+  <path d="M 254 96 L 254 151" stroke-width="5"/>
+  <path d="M 336 96 L 336 151" stroke-width="5"/>
+  <path d="M 481 148 L 490 158" stroke-width="3"/>
+
+  <!-- Side mirrors -->
+  <path d="M 137 151 L 124 151 L 119 163 L 139 165 Z"
+        fill="#111318"/>
+
+  <!-- Door seams -->
+  <path d="M 250 151 L 245 218"/>
+  <path d="M 339 151 L 339 218"/>
+  <path d="M 468 151 L 475 218"/>
+
+  <!-- Door handles -->
+  <path d="M 272 171 L 300 171" stroke="#F8F3E9" stroke-width="3"/>
+  <path d="M 362 171 L 390 171" stroke="#F8F3E9" stroke-width="3"/>
+  <path d="M 422 171 L 448 171" stroke="#F8F3E9" stroke-width="3"/>
+
+  <!-- Lower body styling -->
+  <path d="M 77 215 L 599 215"
+        stroke="#F8F3E9" stroke-width="2"/>
+  <path d="M 82 225 L 601 225"
+        stroke="#D93643" stroke-width="3"/>
+
+  <!-- Rear taillight -->
+  <path d="
+    M 59 181
+    L 77 175
+    L 75 207
+    L 54 210
+    Z"
+    fill="#D93643" stroke="#F8F3E9" stroke-width="1.5"/>
+
+  <!-- Front headlight -->
+  <path d="
+    M 612 177
+    L 633 183
+    L 642 198
+    L 614 195
+    Z"
+    fill="#F8F3E9"/>
+
+  <!-- Front grille -->
+  <path d="
+    M 620 201
+    L 646 205
+    L 650 231
+    L 615 232
+    Z"
+    fill="#111318" stroke="#F8F3E9" stroke-width="2"/>
+
+  <!-- Grille bars -->
+  <path d="M 620 208 L 647 210" stroke="#F8F3E9" stroke-width="2"/>
+  <path d="M 619 216 L 648 218" stroke="#F8F3E9" stroke-width="2"/>
+  <path d="M 618 224 L 649 226" stroke="#F8F3E9" stroke-width="2"/>
+
+  <!-- Front bumper -->
+  <path d="M 614 235 L 652 236"
+        stroke="#F8F3E9" stroke-width="4"/>
+
+  <!-- Rear wheel arch -->
+  <path d="M 92 247
+           A 44 44 0 0 1 180 247"
+        stroke="#F8F3E9" stroke-width="3"/>
+
+  <!-- Front wheel arch -->
+  <path d="M 461 247
+           A 44 44 0 0 1 549 247"
+        stroke="#F8F3E9" stroke-width="3"/>
+
+  <!-- Rear tire -->
+  <circle cx="136" cy="244" r="35"
+          fill="#111318" stroke="#F8F3E9" stroke-width="3"/>
+  <circle cx="136" cy="244" r="23"
+          fill="#33363C" stroke="#F8F3E9" stroke-width="2"/>
+  <circle cx="136" cy="244" r="8"
+          fill="#F8F3E9" stroke="#111318" stroke-width="2"/>
+
+  <!-- Rear wheel spokes -->
+  <g stroke="#F8F3E9" stroke-width="2">
+    <path d="M136 224 L136 236"/>
+    <path d="M136 252 L136 264"/>
+    <path d="M116 244 L128 244"/>
+    <path d="M144 244 L156 244"/>
+    <path d="M122 230 L130 238"/>
+    <path d="M142 250 L150 258"/>
+    <path d="M150 230 L142 238"/>
+    <path d="M130 250 L122 258"/>
+  </g>
+
+  <!-- Front tire -->
+  <circle cx="505" cy="244" r="35"
+          fill="#111318" stroke="#F8F3E9" stroke-width="3"/>
+  <circle cx="505" cy="244" r="23"
+          fill="#33363C" stroke="#F8F3E9" stroke-width="2"/>
+  <circle cx="505" cy="244" r="8"
+          fill="#F8F3E9" stroke="#111318" stroke-width="2"/>
+
+  <!-- Front wheel spokes -->
+  <g stroke="#F8F3E9" stroke-width="2">
+    <path d="M505 224 L505 236"/>
+    <path d="M505 252 L505 264"/>
+    <path d="M485 244 L497 244"/>
+    <path d="M513 244 L525 244"/>
+    <path d="M491 230 L499 238"/>
+    <path d="M511 250 L519 258"/>
+    <path d="M519 230 L511 238"/>
+    <path d="M499 250 L491 258"/>
+  </g>
+
+  <!-- Roof antenna -->
+  <path d="M 385 85 L 395 75 L 405 85"
+        stroke-width="2"/>
+
+  <!-- Subtle SUV model label -->
+  <text x="355" y="202"
+        fill="#F8F3E9"
+        stroke="none"
+        font-family="Arial, Helvetica, sans-serif"
+        font-size="12"
+        font-weight="bold"
+        letter-spacing="3"
+        text-anchor="middle">DURANGO</text>
+
+</svg>
+
 
   <div class="road"></div>
 
