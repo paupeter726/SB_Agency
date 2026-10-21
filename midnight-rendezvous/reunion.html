@@ -1,45 +1,448 @@
-<section class="poster">
-  <header class="poster-header">
-    <h1>MISSION: <span>HOMECOMING</span></h1>
-    <p>FOR SANDY, WITH LOVE FROM PAUL</p>
-  </header>
 
-  <h2 class="salutation">To my Sandy,</h2>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#10243F">
+<title>Mission: Homecoming | SB Agency</title>
 
-  <div class="poster-message">
+<style>
+:root {
+  --cream: #F8F3E9;
+  --navy: #10243F;
+  --red: #D93643;
+  --black: #111318;
+  --paper: #FFFCF5;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  padding: 24px 12px 40px;
+  background: var(--cream);
+  color: var(--navy);
+  font-family: Georgia, "Times New Roman", serif;
+}
+
+.poster {
+  max-width: 760px;
+  margin: auto;
+  padding: 30px clamp(18px, 5vw, 48px);
+  background: var(--paper);
+  border: 2px solid var(--navy);
+  outline: 1px solid var(--red);
+  outline-offset: 5px;
+  box-shadow: 0 12px 35px #10243F18;
+  overflow: hidden;
+}
+
+.topline {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  font: bold 11px Arial, sans-serif;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.logo {
+  display: block;
+  width: 90px;
+  max-height: 85px;
+  object-fit: contain;
+}
+
+.classification {
+  color: var(--red);
+  text-align: right;
+}
+
+h1 {
+  margin: 18px 0 8px;
+  font: 900 clamp(32px, 7vw, 58px)/0.98 Arial, sans-serif;
+  letter-spacing: -2px;
+  text-align: center;
+}
+
+h1 span { color: var(--red); }
+
+.subtitle {
+  text-align: center;
+  font: bold 12px Arial, sans-serif;
+  letter-spacing: 3px;
+}
+
+.rule {
+  height: 2px;
+  margin: 20px 0;
+  background: var(--navy);
+}
+
+.circle-pairs {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin: 22px 0;
+}
+
+.pair {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.target {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border: 3px solid var(--red);
+  border-radius: 50%;
+}
+
+.target::after {
+  content: "";
+  width: 11px;
+  height: 11px;
+  background: var(--red);
+  border-radius: 50%;
+}
+
+.target.small {
+  width: 25px;
+  height: 25px;
+  border-width: 2px;
+}
+
+.target.small::after {
+  width: 8px;
+  height: 8px;
+}
+
+.artwork {
+  position: relative;
+  margin: 12px auto 18px;
+  padding: 10px 0 0;
+  border-bottom: 2px solid var(--navy);
+}
+
+.plane {
+  display: block;
+  width: min(175px, 40%);
+  height: auto;
+  margin: 0 auto;
+  color: var(--navy);
+}
+
+.flight-label {
+  margin: 5px 0 0;
+  color: var(--red);
+  text-align: center;
+  font: bold 10px Arial, sans-serif;
+  letter-spacing: 3px;
+}
+
+.airport {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin: 15px 0 0;
+  font: bold 11px Arial, sans-serif;
+  letter-spacing: 2px;
+}
+
+.airport::before,
+.airport::after {
+  content: "";
+  height: 1px;
+  flex: 1;
+  background: var(--red);
+}
+
+.salutation {
+  margin: 20px 0 10px;
+  color: var(--red);
+  font: italic clamp(28px, 5vw, 40px) Georgia, serif;
+  text-align: center;
+}
+
+.message {
+  max-width: 580px;
+  margin: auto;
+  font-size: 16px;
+  line-height: 1.75;
+  text-align: center;
+}
+
+.message p { margin: 14px 0; }
+
+.emphasis {
+  margin: 24px 0;
+  color: var(--red);
+  font: 900 clamp(24px, 5vw, 36px) Arial, sans-serif;
+  letter-spacing: 1px;
+  text-align: center;
+}
+
+.signature {
+  margin: 22px 0 6px;
+  color: var(--red);
+  font-size: 27px;
+  font-style: italic;
+  text-align: center;
+}
+
+.mission {
+  margin: 24px auto 12px;
+  padding: 15px 12px;
+  max-width: 370px;
+  border: 2px solid var(--red);
+  text-align: center;
+  font: bold 11px Arial, sans-serif;
+  letter-spacing: 2px;
+}
+
+.mission strong {
+  display: block;
+  margin-top: 7px;
+  color: var(--red);
+  font-size: 23px;
+}
+
+.vehicle-label {
+  margin: 24px 0 0;
+  text-align: center;
+  font: bold 10px Arial, sans-serif;
+  letter-spacing: 3px;
+}
+
+.durango {
+  display: block;
+  width: min(440px, 100%);
+  height: auto;
+  margin: 0 auto;
+}
+
+.road {
+  width: 88%;
+  height: 2px;
+  margin: 0 auto 12px;
+  background: var(--red);
+}
+
+.footer {
+  margin-top: 20px;
+  padding-top: 13px;
+  border-top: 1px solid var(--navy);
+  text-align: center;
+  font: bold 10px Arial, sans-serif;
+  letter-spacing: 2px;
+}
+
+@media (max-width: 480px) {
+  body { padding: 14px 10px 25px; }
+  .poster { padding: 20px 15px; }
+  .logo { width: 68px; }
+  .topline { font-size: 9px; letter-spacing: 1px; }
+  .message { font-size: 15px; }
+  .circle-pairs { gap: 20px; }
+}
+
+@media print {
+  body { padding: 0; background: white; }
+  .poster {
+    max-width: none;
+    border: 1px solid var(--navy);
+    outline: none;
+    box-shadow: none;
+  }
+}
+</style>
+</head>
+
+<body>
+<main class="poster">
+
+  <div class="topline">
+    <img
+      class="logo"
+      src="../assets/images/SB-Logo.png"
+      alt="SB Agency Logo"
+    >
+    <div class="classification">
+      PERSONAL MESSAGE<br>
+      <span>MISSION FILE: HOMEcoming</span>
+    </div>
+  </div>
+
+  <h1>MISSION: <span>HOMECOMING</span></h1>
+  <div class="subtitle">A SPECIAL MESSAGE FOR SANDY</div>
+
+  <div class="rule"></div>
+
+  <!-- Two pairs of red circles with centered dots -->
+  <div class="circle-pairs" aria-hidden="true">
+    <div class="pair">
+      <span class="target"></span>
+      <span class="target small"></span>
+    </div>
+    <div class="pair">
+      <span class="target"></span>
+      <span class="target small"></span>
+    </div>
+  </div>
+
+  <!-- Airplane outline: editable SVG illustration -->
+  <section class="artwork" aria-label="Airplane and airport">
+    <svg class="plane" viewBox="0 0 220 150"
+         fill="none" stroke="currentColor"
+         stroke-width="3" stroke-linecap="round"
+         stroke-linejoin="round" role="img"
+         aria-label="Airplane outline">
+      <path d="M18 79 L90 68 L126 20 Q131 14 137 18
+               L142 22 L125 65 L182 57 Q194 56 199 64
+               L202 69 L131 88 L113 122 L101 126
+               L104 95 L48 104 L34 119 L25 119
+               L31 98 L18 91 Z"/>
+      <path d="M90 68 L104 95"/>
+      <path d="M126 65 L131 88"/>
+      <path d="M31 98 L18 91"/>
+    </svg>
+
+    <div class="flight-label">HOMEWARD BOUND</div>
+
+    <div class="airport">
+      THE AIRPORT • OUR REUNION
+    </div>
+  </section>
+
+  <!-- EDITABLE MESSAGE: change any words in these paragraphs -->
+  <section class="message">
+    <h2 class="salutation">To my Sandy,</h2>
+
     <p>
       I just wanted to tell you how much it means to me
-      that you're coming to pick me up at the airport. So I can see your boobs.
+      that you're coming to pick me up at the airport.
     </p>
 
     <p>
-      I know it's a long drive, and I know you're tired and not feeling awesome.
+      I know it's a long drive, and I know you're tired.
       That makes your effort mean even more to me.
-      I appreciate you and your boobs as well as all the other ways you show me love.
+      I don't ever want you to think I take it for granted.
+      I appreciate you, your time, and all the little ways
+      you show me that you love me.
     </p>
 
-    <h2 class="highlight">IT'S SEEING YOU (& your massive boobs).</h2>
+    <p>
+      Honestly, one of the things I'm looking forward
+      to most isn't the flight ending or getting my bags.
+    </p>
+
+    <div class="emphasis">IT'S SEEING YOU.</div>
 
     <p>
       Getting to see your face, give you a big hug,
-      and finally be together again is what I'm
-      looking forward to most. Second is seeing your boobs. I am literally obsessed.
+      and finally be together again.
     </p>
 
     <p>
-      Thank you for being the person I'm always so
-      happy to come home to.
+      There's something special about knowing you'll be
+      there waiting for me. After being away, I can't
+      think of a better welcome home than you.
     </p>
-  </div>
 
-  <h2 class="salutation">
-    I'm counting down the minutes until I see you.
-  </h2>
+    <p>
+      I wish I could take some of the tiredness out of
+      your day and make that drive easier for you.
+      You don't have to do anything special or make
+      a big fuss. Just having you there is more than enough.
+    </p>
 
-  <p class="signature">All my love, Paul ❤️</p>
+    <p>
+      Thank you for making the effort, sweetheart.
+      Thank you for being you. And thank you for being
+      the person I'm always so happy to come home to.
+    </p>
 
-  <div class="mission-box">
-    YOUR ONLY MISSION:
+    <p>
+      I'm counting down the moments until I get to see you.
+    </p>
+
+    <div class="signature">All my love,<br>Paul ❤️</div>
+  </section>
+
+  <div class="mission">
+    YOUR ONLY MISSION
     <strong>ARRIVE SAFELY.</strong>
+    THE HUGS CAN WAIT UNTIL WE'RE TOGETHER.
   </div>
-</section>
+
+  <!-- Black Dodge Durango outline: editable SVG illustration -->
+  <div class="vehicle-label">GROUND TRANSPORT • REUNION DETAIL</div>
+
+  <svg class="durango" viewBox="0 0 520 210"
+       role="img" aria-label="Black Dodge Durango SUV"
+       xmlns="http://www.w3.org/2000/svg">
+    <g stroke="#111318" stroke-width="5"
+       stroke-linejoin="round" stroke-linecap="round">
+      <!-- Body -->
+      <path fill="#111318"
+        d="M36 139 L45 111 Q49 99 67 94
+           L112 85 L153 44 Q164 33 186 32
+           L325 32 Q348 33 366 53
+           L410 91 L455 104 Q472 110 478 129
+           L483 151 L468 163 L49 163 L34 153 Z"/>
+
+      <!-- Windows -->
+      <path fill="#F8F3E9"
+        d="M128 83 L166 47 Q174 40 190 40
+           L220 40 L220 83 Z"/>
+      <path fill="#F8F3E9"
+        d="M232 40 L322 40 Q339 41 351 56
+           L376 83 L232 83 Z"/>
+
+      <!-- Window dividers -->
+      <path fill="none" d="M225 40 L225 84 M357 58 L366 84"/>
+
+      <!-- Front grille and lamps -->
+      <path fill="#F8F3E9" stroke-width="3"
+        d="M438 113 L463 121 L467 137 L438 137 Z"/>
+      <path fill="#D93643" stroke-width="2"
+        d="M445 115 L462 121 L464 126 L443 124 Z"/>
+      <path fill="none" stroke="#F8F3E9" stroke-width="2"
+        d="M442 129 L461 132 M442 134 L461 137"/>
+
+      <!-- Rear lamp -->
+      <path fill="#D93643" stroke-width="2"
+        d="M43 119 L61 115 L60 136 L39 137 Z"/>
+
+      <!-- Side detail -->
+      <path fill="none" stroke="#F8F3E9" stroke-width="2"
+        d="M72 144 L423 144"/>
+      <path fill="none" stroke="#F8F3E9" stroke-width="2"
+        d="M116 95 L385 95"/>
+
+      <!-- Wheels -->
+      <circle cx="129" cy="158" r="29" fill="#111318"/>
+      <circle cx="129" cy="158" r="16" fill="#F8F3E9" stroke-width="4"/>
+      <circle cx="129" cy="158" r="6" fill="#111318" stroke="none"/>
+
+      <circle cx="405" cy="158" r="29" fill="#111318"/>
+      <circle cx="405" cy="158" r="16" fill="#F8F3E9" stroke-width="4"/>
+      <circle cx="405" cy="158" r="6" fill="#111318" stroke="none"/>
+    </g>
+  </svg>
+
+  <div class="road"></div>
+
+  <footer class="footer">
+    SB AGENCY • HOME IS WHERE WE REUNITE
+  </footer>
+
+</main>
+</body>
+</html>
