@@ -40,10 +40,10 @@
   <main class="page">
     <header>
       <img class="logo" src="assets/images/SB-Logo.png" alt="SB Agency Logo" onerror="this.style.display='none'">
-      <div class="eyebrow">SB Agency · Evening Briefing</div>
+      <div class="eyebrow">SB Agency · Evening De-Briefing</div>
       <h1>Thursday Night<br>Date Night</h1>
-      <p class="subtitle">Two ways to slow down, reconnect, and make tonight about us. Choose our evening plan.</p>
-      <div class="stamp">CONFIDENTIAL · JUST US</div>
+      <p class="subtitle">Pick your preffered way to slow down and enjoy each other tonight.</p>
+      <div class="stamp">CONFIDENTIAL · JUST US - NO KIDS</div>
     </header>
     <div class="section-title">Available Operations</div>
     <section class="options" aria-label="Date night options">
@@ -51,14 +51,14 @@
         <div class="number">OPTION 01 / COZY &amp; QUIET</div>
         <div class="symbol" aria-hidden="true">▣</div>
         <h2>Private Basement TV Show</h2>
-        <p>Settle into our own private viewing space, pick a show we both enjoy, get comfortable, and leave the outside world upstairs.</p>
+        <p>Watch our own favorite show and cuddle under blanket.</p>
         <button type="button" onclick="choosePlan('tv')">Select TV Night</button>
       </article>
       <article class="option">
         <div class="number">OPTION 02 / WARM &amp; RELAXED</div>
         <div class="symbol" aria-hidden="true">♨</div>
         <h2>Hot Tub Time</h2>
-        <p>Unwind in warm, bubbling water, put the phones away, and enjoy some uninterrupted time together under the evening sky.</p>
+        <p>You, me sans tops & maybe bottoms.</p>
         <button type="button" onclick="choosePlan('tub')">Select Hot Tub</button>
       </article>
     </section>
@@ -75,10 +75,10 @@
       const text = document.getElementById('choiceText');
       if (plan === 'tv') {
         title.textContent = 'Operation: Private Screening';
-        text.textContent = 'TV night selected. Choose a show, prepare your favorite snacks, and settle in together.';
+        text.textContent = 'TV night selected. Choose a show, take your bra off, cuddle up.';
       } else {
         title.textContent = 'Operation: Warm Waters';
-        text.textContent = 'Hot tub time selected. Get the water ready, bring your drinks, and enjoy a relaxing evening together.';
+        text.textContent = 'Hot tub time selected. Get your suit ready, tie top.';
       }
       panel.classList.add('visible');
       panel.scrollIntoView({ behavior:'smooth', block:'nearest' });
